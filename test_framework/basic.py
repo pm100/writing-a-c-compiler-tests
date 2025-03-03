@@ -63,7 +63,8 @@ def get_props_key(source_file: Path) -> str:
     """
     if source_file.stem.endswith("_client"):
         source_file = replace_stem(source_file, source_file.stem[: -len("_client")])
-    return str(source_file.relative_to(TEST_DIR))
+    name = str(source_file.relative_to(TEST_DIR))
+    return name.replace("\\", "/")
 
 
 def needs_mathlib(prog: Path) -> bool:
@@ -112,11 +113,19 @@ def gcc_compile_and_run(
 
     # compile it
     try:
-        result = subprocess.run(
-            ["gcc", "-D", "SUPPRESS_WARNINGS"] + source_files + options + ["-o", exe],
-            check=True,
+        if platform.system() == "Windows":
+            result = subprocess.run(
+                ["cl.exe", "/D", "SUPPRESS_WARNINGS"] + source_files + options + ["/Fe" + str(exe)],
+                            check=True,
             text=True,
             capture_output=True,
+            )
+        else:
+            result = subprocess.run(
+                ["gcc", "-D", "SUPPRESS_WARNINGS"] + source_files + options + ["-o", exe],
+                check=True,
+                text=True,
+                capture_output=True,
         )
         # print any warnings even if it succeeded
         print_stderr(result)
@@ -394,7 +403,10 @@ class TestChapter(unittest.TestCase):
 
         # run the executable
         # TODO cleaner handling if executable doesn't exist? or check that it exists above?
-        exe = source_file.with_suffix("")
+        if platform.system() == "Windows":
+            exe = source_file.with_suffix(".exe")
+        else:
+            exe = source_file.with_suffix("")
         result = subprocess.run(
             [exe], check=False, capture_output=True, text=True, timeout=10.0
         )

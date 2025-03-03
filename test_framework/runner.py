@@ -303,7 +303,7 @@ def check_setup() -> bool:
     system = platform.system()
 
     VALID_ARCHS: List[str] = ["x86_64", "amd64"]  # two names for the same arch
-
+    compiler = ["gcc", "-v"]
     # macOS: make sure they're running on x86-64; if they're on ARM, prompt to use Rosetta
     if system == "Darwin":
         if machine in VALID_ARCHS:
@@ -340,13 +340,14 @@ Then try running this script again from that shell.
 
     elif system == "Windows":
         # the architecture is right but they need to use WSL
-        print(
-            """You're running Windows. You need to use WSL to emulate Linux.
-Follow these instructions to install WSL and set up a Linux distribution on your machine: https://learn.microsoft.com/en-us/windows/wsl/install.
-Then clone the test suite in your Linux distribution and try this command again from there.
-            """
-        )
-        return False
+#         print(
+#             """You're running Windows. You need to use WSL to emulate Linux.
+# Follow these instructions to install WSL and set up a Linux distribution on your machine: https://learn.microsoft.com/en-us/windows/wsl/install.
+# Then clone the test suite in your Linux distribution and try this command again from there.
+#             """
+#         )
+        #return False
+        compiler = ["cl","/?"]
 
     elif system not in ["Linux", "FreeBSD"]:
         # This is probably some other Unix-like system; it'll probably work but I haven't tested it
@@ -356,7 +357,7 @@ Then clone the test suite in your Linux distribution and try this command again 
 
     # Check that GCC command is present
     try:
-        subprocess.run(["gcc", "-v"], check=True, capture_output=True)
+        subprocess.run(compiler, check=True, capture_output=True)
     except FileNotFoundError:
         msg = "Can't find the 'gcc' command. "
         if system == "Darwin":

@@ -7,6 +7,7 @@ import argparse
 import itertools
 import json
 import subprocess
+import platform
 import sys
 from pathlib import Path
 from typing import Any, Iterable
@@ -164,7 +165,10 @@ def main() -> None:
                 print(f"Return code for {key} is {result.returncode}", file=sys.stderr)
         finally:
             # delete executable
-            exe = source_files[0].with_suffix("")
+            if platform.system() == "Windows":
+                exe = source_files[0].with_suffix(".exe")
+            else:
+                exe = source_files[0].with_suffix("")
             Path.unlink(exe)
 
     with open("expected_results.json", "w", encoding="utf-8") as f:
