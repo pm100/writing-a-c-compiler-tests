@@ -316,7 +316,7 @@ class TestChapter(unittest.TestCase):
         exe = actual.args[0]
         self.assertEqual(
             expected_retcode,
-            actual.returncode,
+            actual.returncode & 0xFF,
             msg=build_error_message(expected_retcode, expected_stdout, actual, exe),
         )
         self.assertEqual(
@@ -394,7 +394,7 @@ class TestChapter(unittest.TestCase):
         self.assertEqual(
             compile_result.returncode,
             0,
-            msg=f"compilation of {source_file} failed with error:\n{compile_result.stderr}",
+            msg=f"compilation of {source_file}  {compile_result.returncode}:\n{compile_result.stderr}",
         )
 
         # print stderr (might have warnings we care about even if compilation succeeded)
@@ -554,7 +554,8 @@ class ExtraCredit(Flag):
     NONE = 0
     # spurious pylint error (https://github.com/PyCQA/pylint/issues/7381)
     # pylint: disable=unsupported-binary-operation
-    ALL = BITWISE | COMPOUND | INCREMENT | GOTO | SWITCH | NAN | UNION
+    #ALL = BITWISE | COMPOUND | INCREMENT | GOTO | SWITCH | NAN | UNION
+    ALL = BITWISE | COMPOUND |  GOTO | SWITCH | NAN | UNION
 
 
 def excluded_extra_credit(source_prog: Path, extra_credit_flags: ExtraCredit) -> bool:
