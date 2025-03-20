@@ -18,6 +18,7 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, Type
 ROOT_DIR = Path(__file__).parent.parent  # ROOT of test repo
 TEST_DIR = ROOT_DIR / "tests"  # directory containing all test programs
 IS_OSX = platform.system().lower() == "darwin"
+IS_WINDOWS = platform.system().lower() == "windows"
 EXPECTED_RESULTS: dict[str, Any]
 
 with open(ROOT_DIR / "expected_results.json", "r", encoding="utf-8") as f:
@@ -39,24 +40,29 @@ with open(ROOT_DIR / "test_properties.json", "r", encoding="utf-8") as f:
 
 MAC_SUFFIX = "_osx.s"
 LINUX_SUFFIX = "_linux.s"
+WINDOWS_SUFFIX = "_windows.s"
 ASSEMBLY_LIBS = set(
     Path(platform_specific_lib).name
     for libs in ASSEMBLY_DEPENDENCIES.values()
     for lib in libs
-    for platform_specific_lib in [lib + MAC_SUFFIX, lib + LINUX_SUFFIX]
+    for platform_specific_lib in [lib + MAC_SUFFIX, lib + LINUX_SUFFIX, lib + WINDOWS_SUFFIX]
 )
 
 # main TestChapter class + related utilities
 
 
-def get_platform() -> str:
-    return "os_x" if IS_OSX else "linux"
+#def get_platform() -> str:
+#    return "os_x" if IS_OSX else "linux"
 
 
 def get_platform_suffix() -> str:
-    return MAC_SUFFIX if IS_OSX else LINUX_SUFFIX
-
-
+   # return MAC_SUFFIX if IS_OSX else LINUX_SUFFIX
+    if IS_OSX:
+       return MAC_SUFFIX
+    if IS_WINDOWS:
+        return WINDOWS_SUFFIX
+    return LINUX_SUFFIX
+   
 def get_props_key(source_file: Path) -> str:
     """key to use in EXPECTED_RESULTS, REQUIRES_MATHLIB, EXTRA_CREDIT_PROGRAMS
     If this ends with _client.c, use corresponding lib as props key
@@ -109,17 +115,31 @@ def gcc_compile_and_run(
     """
 
     # output file is same as first input without suffix
-    exe = source_files[0].with_suffix("")
+    if platform.system() == "Windows":
+        exe = source_files[0].with_suffix(".exe")
+    else:
+        exe = source_files[0].with_suffix("")
 
     # compile it
     try:
         if platform.system() == "Windows":
+            if source_files[1].suffix == ".s":
+                # TODO handle assembly files on Windows
+                obj = source_files[1].with_suffix(".obj")
+                result = subprocess.run(
+                    ["nasm", "-fwin64", source_files[1]] + ["-o", obj],
+                    check=True,
+                    text=True,
+                    capture_output=True,
+                )
+                source_files[1] = obj
             result = subprocess.run(
-                ["cl.exe", "/D", "SUPPRESS_WARNINGS"] + source_files + options + ["/Fe" + str(exe)],
+                ["cl.exe", "/D", "SUPPRESS_WARNINGS", "msvcrt.lib"] + source_files + options + ["/Fe" + str(exe)],
                             check=True,
             text=True,
             capture_output=True,
             )
+     
         else:
             result = subprocess.run(
                 ["gcc", "-D", "SUPPRESS_WARNINGS"] + source_files + options + ["-o", exe],
@@ -129,10 +149,11 @@ def gcc_compile_and_run(
         )
         # print any warnings even if it succeeded
         print_stderr(result)
+
     except subprocess.CalledProcessError as err:
         # This is an internal error in the test suite
         # TODO better handling of internal problems with test suite
-        raise RuntimeError(err.stderr) from err
+        raise RuntimeError(err.stderr + err.stdout) from err
 
     # run it
     return subprocess.run(
@@ -248,7 +269,10 @@ class TestChapter(unittest.TestCase):
         )
 
         for junk in garbage_files:
-            junk.unlink()
+            try:
+                junk.unlink()
+            except:
+                pass
 
     def invoke_compiler(
         self, source_file: Path, cc_opt: Optional[str] = None
@@ -391,6 +415,7 @@ class TestChapter(unittest.TestCase):
 
         # run compiler, make sure it succeeds
         compile_result = self.invoke_compiler(source_file, cc_opt=cc_opt)
+
         self.assertEqual(
             compile_result.returncode,
             0,
@@ -442,7 +467,10 @@ class TestChapter(unittest.TestCase):
             # print stderr (might have warnings we care about even if compilation succeeded)
             # TODO make this controlled by verbosity maybe?
             print_stderr(compilation_result)
-            compiled_file_under_test = file_under_test.with_suffix(".o")
+            if platform.system() == "Windows":
+                compiled_file_under_test = file_under_test.with_suffix(".obj")
+            else:
+                compiled_file_under_test = file_under_test.with_suffix(".o")
             validation_key = file_under_test
         else:
             compiled_file_under_test = file_under_test
