@@ -134,7 +134,7 @@ def gcc_compile_and_run(
                 )
                 source_files[1] = obj
             result = subprocess.run(
-                ["cl.exe", "/D", "SUPPRESS_WARNINGS", "msvcrt.lib"] + source_files + options + ["/Fe" + str(exe)],
+                ["cl.exe", "/D", "SUPPRESS_WARNINGS", "msvcrt.lib", "/nologo"] + source_files + options + ["/Fe" + str(exe)],
                             check=True,
             text=True,
             capture_output=True,
