@@ -1,8 +1,8 @@
-/* Make sure we can read and write long integers in other translation units */
+/* Make sure we can read and write LONG64 integers in other translation units */
 
 // the following are defined in long_global_var.c
-extern long int l;
-long return_l(void);
+extern LONG64 int l;
+LONG64 return_l(void);
 int return_l_as_int(void);
 
 

@@ -1,5 +1,5 @@
-/* Test initializing and updating a long global variable */
-static long foo = 4294967290l;
+/* Test initializing and updating a LONG64 global variable */
+static LONG64 foo = 4294967290l;
 
 int main(void)
 {

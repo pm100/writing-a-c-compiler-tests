@@ -10,16 +10,16 @@
 
 #include "../util.h"
 
-long glob = 5l;
+LONG64 glob = 5l;
 
-long glob7;
-long glob8;
-long glob9;
-long glob10;
-long glob11;
-long glob12;
+LONG64 glob7;
+LONG64 glob8;
+LONG64 glob9;
+LONG64 glob10;
+LONG64 glob11;
+LONG64 glob12;
 
-int target(long one, long two, long three, long four, long five, long six) {
+int target(LONG64 one, LONG64 two, LONG64 three, LONG64 four, LONG64 five, LONG64 six) {
 
     // Define 6 variables that interfere with each other and with arguments,
     // initializing each one with a complex expression that requires an
@@ -32,12 +32,12 @@ int target(long one, long two, long three, long four, long five, long six) {
     // registers, to validate that we actually performed coalescing and didn't
     // just happen to assign a variable and the corresponding intermediate
     // result to the same hard register.
-    long seven = (glob - 2l) + four;
-    long eight = (glob - 1l) * two;
-    long nine = (glob - 2l) * three;
-    long ten = (10l - glob) * two;
-    long eleven = (glob * two) + one;
-    long twelve = (glob + 1l) * two;
+    LONG64 seven = (glob - 2l) + four;
+    LONG64 eight = (glob - 1l) * two;
+    LONG64 nine = (glob - 2l) * three;
+    LONG64 ten = (10l - glob) * two;
+    LONG64 eleven = (glob * two) + one;
+    LONG64 twelve = (glob + 1l) * two;
 
     // Save to global variables to validate later
     glob7 = seven;

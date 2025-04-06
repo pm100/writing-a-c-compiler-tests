@@ -48,7 +48,7 @@ int int_array(void) {
         return 10;
     }
 
-    long l = 9223372036854775807l;
+    LONG64 l = 9223372036854775807l;
     if ((ptr += l - 9223372036854775806l) != arr + 3) {
         return 11;
     }
@@ -107,7 +107,7 @@ int double_array(void) {
         return 10;
     }
 
-    long l = 9223372036854775807l;
+    LONG64 l = 9223372036854775807l;
     if ((ptr += l - 9223372036854775806l) != arr + 3) {
         return 11;
     }

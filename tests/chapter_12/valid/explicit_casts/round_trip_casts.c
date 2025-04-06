@@ -3,7 +3,7 @@
  */
 
 // start with a global variable so we can't optimize away casts in Part III
-unsigned long a = 8589934580ul; // 2^33 - 12
+unsigned LONG64 a = 8589934580ul; // 2^33 - 12
 
 int main(void) {
 
@@ -11,16 +11,16 @@ int main(void) {
      * casting it to unsigned int and back is equivalent to subtracting
      * 2^32, resulting in 4294967284
      */
-    unsigned long b = (unsigned long) (unsigned int) a;
+    unsigned LONG64 b = (unsigned LONG64) (unsigned int) a;
 
     if (b != 4294967284ul)
         return 1;
 
     /* Casting a to signed int results in -12, and
-     * casting it back to unsigned long results in 2^64 - 12,
+     * casting it back to unsigned LONG64 results in 2^64 - 12,
      * or 18446744073709551604
      */
-    b = (unsigned long) (signed int) a;
+    b = (unsigned LONG64) (signed int) a;
     if (b != 18446744073709551604ul)
         return 2;
 

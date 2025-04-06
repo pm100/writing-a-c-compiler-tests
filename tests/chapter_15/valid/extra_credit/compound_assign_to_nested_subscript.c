@@ -1,11 +1,11 @@
 // test compound assignment where LHS is nested subscripted expression
 
-long long_nested_arr[2][3] = {{1, 2, 3}, {4, 5, 6}};
+LONG64 long_nested_arr[2][3] = {{1, 2, 3}, {4, 5, 6}};
 double dbl_nested_arr[3][2] = {{100.0, 101.0}, {102.0, 103.0}, {104.0, 105.0}};
 unsigned unsigned_index = 10;
 
 int main(void) {
-    // nested long array
+    // nested LONG64 array
     if ((long_nested_arr[1][unsigned_index - 8] *= -1) != -6) {
         return 1;  // fail
     }
@@ -20,7 +20,7 @@ int main(void) {
                 // this is the one we just checked
                 break;
             }
-            long expected = i * 3 + j + 1;
+            LONG64 expected = i * 3 + j + 1;
             if (long_nested_arr[i][j] != expected) {
                 return 3;  // fail
             }

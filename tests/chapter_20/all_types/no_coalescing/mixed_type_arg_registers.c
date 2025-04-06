@@ -23,7 +23,7 @@ struct s1 {
 
 struct s2 {
     // RSI
-    unsigned long ul;
+    unsigned LONG64 ul;
     // XMM1
     double d;
 };
@@ -40,18 +40,18 @@ struct s3 {
 // both of these functions print an error message and exit if
 // arguments don't have the expected values
 int callee(struct s1 a, struct s2 b, char c, struct s3 in_mem);
-int check_some_args(int one, long two, unsigned int three, unsigned long four,
+int check_some_args(int one, LONG64 two, unsigned int three, unsigned LONG64 four,
                     char five, unsigned char six, signed char seven);
 
 // Global variables
 int glob1;
-long glob2;
+LONG64 glob2;
 unsigned int glob3;
-unsigned long glob4;
+unsigned LONG64 glob4;
 char glob5;
 unsigned char glob6;
 signed char glob7;
-long glob8;
+LONG64 glob8;
 
 double glob1_d;
 double glob2_d;
@@ -75,13 +75,13 @@ double glob13_d;
 int target(int one, int two, int three, double one_d, double two_d) {
     // Create a clique of 12 integer pseudoregs
     // we'll use eight through twelve in arguments to callee
-    long four = two + 2;
+    LONG64 four = two + 2;
     char five = three + two;
     int six = 12 - one - two - three;
     unsigned int seven = 13 - six;
     unsigned char eight = four * two;
-    unsigned long nine = three * three;
-    signed long ten = six + four;
+    unsigned LONG64 nine = three * three;
+    signed LONG64 ten = six + four;
     signed char eleven = six * two - one;
     int twelve = six * two;
 

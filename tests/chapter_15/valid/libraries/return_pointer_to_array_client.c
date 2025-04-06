@@ -1,13 +1,13 @@
 /* Make sure we can define/call functions that return pointers to arrays */
-long (*return_row(long (*arr)[3][4], int idx))[4];
+LONG64 (*return_row(LONG64 (*arr)[3][4], int idx))[4];
 
 int main(void) {
-    long nested_array[2][3][4] = {
+    LONG64 nested_array[2][3][4] = {
         {{0}},
         {{-12, -13, -14, -15}, {-16}}
     };
 
-    long (*row_pointer)[4] = return_row(nested_array, 1);
+    LONG64 (*row_pointer)[4] = return_row(nested_array, 1);
 
     // make sure values are correctly
     for (int i = 0; i < 3; i = i + 1) {

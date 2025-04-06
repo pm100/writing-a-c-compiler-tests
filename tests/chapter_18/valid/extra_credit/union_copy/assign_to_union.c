@@ -6,7 +6,7 @@ struct s {
 
 union u {
     struct s str;
-    long l;
+    LONG64 l;
     double arr[3];
 };
 

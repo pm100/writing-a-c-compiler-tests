@@ -34,7 +34,7 @@ int target_chars(void) {
     c5 >>= 31;
 
     // apply bitwise ops to unsigned chars
-    long x = 32;
+    LONG64 x = 32;
     // it's undefined for shift count to be greater than width of left operand,
     // but this is well-defined b/c of integer promotions
     u4 <<= 12;
@@ -87,9 +87,9 @@ int target_chars(void) {
 
 // Identical to chapter 11's compound_bitwise.c, but inspect assembly
 int target_long_bitwise(void) {
-    // bitwise compound operations on long integers
-    long l1 = 71777214294589695l;  // 0x00ff_00ff_00ff_00ff
-    long l2 = -4294967296;  // -2^32; upper 32 bits are 1, lower 32 bits are 0
+    // bitwise compound operations on LONG64 integers
+    LONG64 l1 = 71777214294589695l;  // 0x00ff_00ff_00ff_00ff
+    LONG64 l2 = -4294967296;  // -2^32; upper 32 bits are 1, lower 32 bits are 0
 
     l1 &= l2;
     if (l1 != 71777214277877760l) {
@@ -137,7 +137,7 @@ int target_long_bitwise(void) {
 
 // similar to chapter 11's compound_bitshift.c, but we inspect assembly
 int target_long_bitshift(void) {
-    // shift int using long shift count
+    // shift int using LONG64 shift count
     int x = 100;
     x <<= 22l;
     if (x != 419430400) {
@@ -154,8 +154,8 @@ int target_long_bitshift(void) {
         return 3;
     }
 
-    // now try shifting a long with an int shift count
-    long l = 12345l;
+    // now try shifting a LONG64 with an int shift count
+    LONG64 l = 12345l;
     if ((l <<= 33) != 106042742538240l) {
         return 4;
     }
@@ -170,13 +170,13 @@ int target_long_bitshift(void) {
 
 // similar to chapter 12's compound_bitwise.c, but we inspect assembly
 int target_unsigned_bitwise(void) {
-    unsigned long ul = 18446460386757245432ul; // 0xfffe_fdfc_fbfa_f9f8
-    ul &= -1000; // make sure we sign-extend -1000 to unsigned long
+    unsigned LONG64 ul = 18446460386757245432ul; // 0xfffe_fdfc_fbfa_f9f8
+    ul &= -1000; // make sure we sign-extend -1000 to unsigned LONG64
     if (ul != 18446460386757244952ul /* 0xfffe_fdfc_fbfa_f818 */) {
         return 1; // fail
     }
 
-    ul |= 4294967040u; // 0xffff_ff00 - make sure we zero-extend this to unsigned long
+    ul |= 4294967040u; // 0xffff_ff00 - make sure we zero-extend this to unsigned LONG64
 
     if (ul != 18446460386824683288ul /* 0xfffe_fdfc_ffff_ff18 */) {
         return 2; // fail
@@ -187,7 +187,7 @@ int target_unsigned_bitwise(void) {
     // result to four-byte ui variable
     int i = 123456;
     unsigned int ui = 4042322160u; // 0xf0f0_f0f0
-    long l = -252645136; // 0xffff_ffff_f0f0_f0f0
+    LONG64 l = -252645136; // 0xffff_ffff_f0f0_f0f0
     // 1. zero-extend ui to 8-bytes
     // 2. XOR w/ l, resulting in 0xffff_ffff_0000_0000
     // 3. truncate back to 4 bytes, resulting in 0
@@ -223,7 +223,7 @@ int target_unsigned_bitshift(void) {
         return 1;
     }
 
-    unsigned long ul = 18446744073709551615UL;  // 2^64 - 1
+    unsigned LONG64 ul = 18446744073709551615UL;  // 2^64 - 1
     ul <<= 44;                                  // 0 out lower 44 bits
     if (ul != 18446726481523507200ul) {
         return 2;  // fail

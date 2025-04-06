@@ -8,11 +8,11 @@ int main(void) {
     // Cast from one pointer type to another
     // Note #1: dereferencing other_ptr would violate strict aliasing, but casting/comparing it is okay.
     // Note #2: casting between pointer types is undefined if the pointer is misaligned for the new type;
-    // this specific case is safe because we're casting from pointer-to-pointer to pointer-to-long,
+    // this specific case is safe because we're casting from pointer-to-pointer to pointer-to-LONG64,
     // and pointers and longs are both eight-byte aligned
-    long *other_ptr = (long *)ptr_arr;
+    LONG64 *other_ptr = (LONG64 *)ptr_arr;
 
-    // After round-trip cast from int(**)[2] to long * and back,
+    // After round-trip cast from int(**)[2] to LONG64 * and back,
     // this must compare equal to its original value.
     return (int(**)[2])other_ptr == ptr_arr;
 }

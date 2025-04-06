@@ -6,8 +6,8 @@
 
 /* basic pointer addition */
 int test_add_constant_to_pointer(void) {
-    long long_arr[12] = {0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 13};
-    long *ptr = long_arr + 10;
+    LONG64 long_arr[12] = {0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 13};
+    LONG64 *ptr = long_arr + 10;
     return *ptr == 13;
 }
 
@@ -98,10 +98,10 @@ int test_add_to_subarray_pointer(void) {
 
 /* Subtract a variable from a pointer */
 int test_subtract_from_pointer(void) {
-    long long_arr[5] = {10, 9, 8, 7, 6};
-    long *one_past_the_end = long_arr + 5;
+    LONG64 long_arr[5] = {10, 9, 8, 7, 6};
+    LONG64 *one_past_the_end = long_arr + 5;
     static int index = 3;
-    long *subtraction_result = one_past_the_end - index;
+    LONG64 *subtraction_result = one_past_the_end - index;
     return *subtraction_result == 8;
 }
 

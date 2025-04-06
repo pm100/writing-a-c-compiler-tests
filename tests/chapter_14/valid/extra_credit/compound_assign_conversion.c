@@ -27,8 +27,8 @@ int main(void) {
 
     // both operands are pointers
     i = -10;
-    unsigned long ul = 9223372036854775807ul; // 2^63 - 1
-    unsigned long *ul_ptr = &ul;
+    unsigned LONG64 ul = 9223372036854775807ul; // 2^63 - 1
+    unsigned LONG64 *ul_ptr = &ul;
     // convert i to common type (ul), perform operation, then
     // convert back to int
     *i_ptr -= *ul_ptr;

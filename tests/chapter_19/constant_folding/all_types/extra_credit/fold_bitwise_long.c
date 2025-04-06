@@ -1,25 +1,25 @@
-/* Test constant-folding the bitwise &, |, ^, >>, and << expressions with long operands */
+/* Test constant-folding the bitwise &, |, ^, >>, and << expressions with LONG64 operands */
 
-long target_and(void) {
+LONG64 target_and(void) {
     // 0x0f0f_0f0f_0f0f_0f0f & 0x00ff_00ff_00ff_00ff
     return 1085102592571150095l & 71777214294589695l;
 }
 
-long target_or(void) {
+LONG64 target_or(void) {
     // 0x0f0f_0f0f_0f0f_0f0f | 0x00ff_00ff_00ff_00ff
     return 1085102592571150095l | 71777214294589695l;
 }
 
-long target_xor(void){
+LONG64 target_xor(void){
     // 0x0f0f_0f0f_0f0f_0f0f ^ 0x00ff_00ff_00ff_00ff
     return 1085102592571150095l ^ 71777214294589695l;
 }
 
-long target_shift_left(void) {
+LONG64 target_shift_left(void) {
     return 1l << 62;
 }
 
-long target_shift_right(void) {
+LONG64 target_shift_right(void) {
     return 72057589742960640l >> 35;
 }
 

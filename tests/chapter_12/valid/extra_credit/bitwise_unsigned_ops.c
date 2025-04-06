@@ -3,7 +3,7 @@
 #endif
 int main(void) {
     unsigned int ui = -1u; // lower 32 bits set
-    unsigned long ul = 9223372036854775808ul; // 2^63, only uppermost bit set
+    unsigned LONG64 ul = 9223372036854775808ul; // 2^63, only uppermost bit set
 
     /* this expression will:
      * 1. zero-extend ui. the result will have all 32 lower bits set to 1

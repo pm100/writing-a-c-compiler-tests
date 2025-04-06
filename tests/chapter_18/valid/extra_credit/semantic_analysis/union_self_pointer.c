@@ -2,7 +2,7 @@
 // to itself as a member
 union self_ptr {
     union self_ptr *ptr;
-    long l;
+    LONG64 l;
 };
 
 int main(void) {

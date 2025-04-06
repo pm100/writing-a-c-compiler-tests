@@ -10,8 +10,8 @@
 #endif
 #endif
 
-void *malloc(unsigned long size);
-void *calloc(unsigned long nmemb, unsigned long size);
+void *malloc(unsigned LONG64 size);
+void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
 int puts(char *s);
 int strcmp(char *s1, char *s2);
 
@@ -59,8 +59,8 @@ int test_file_scope_forward_decl(void) {
 
 // complete the type
 struct pair {
-    long l;
-    long m;
+    LONG64 l;
+    LONG64 m;
 };
 
 // define the functions

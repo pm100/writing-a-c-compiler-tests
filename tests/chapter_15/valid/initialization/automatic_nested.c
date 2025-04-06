@@ -84,11 +84,11 @@ unsigned int three(void) {
 }
 
 /* Initializing an array must not corrupt other objects on the stack. */
-long one = 1l;
+LONG64 one = 1l;
 int test_preserve_stack(void) {
     int i = -1;
 
-    /* Initialize with expressions of long type - make sure they're truncated
+    /* Initialize with expressions of LONG64 type - make sure they're truncated
      * before being copied into the array.
      * Also use an array of < 16 bytes so it's not 16-byte aligned, so there are
      * quadwords that include both array elements and other values.

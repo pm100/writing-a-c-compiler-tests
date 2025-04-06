@@ -3,7 +3,7 @@ double int_to_double(int i) {
     return (double) i;
 }
 
-double long_to_double(long l) {
+double long_to_double(LONG64 l) {
     return (double) l;
 }
 int main(void) {

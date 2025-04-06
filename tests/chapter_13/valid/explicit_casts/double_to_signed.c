@@ -4,15 +4,15 @@ int double_to_int(double d) {
     return (int) d;
 }
 
-long double_to_long(double d) {
-    return (long) d;
+LONG64 double_to_long(double d) {
+    return (LONG64) d;
 }
 
 int main(void) {
 
-    // when truncated, d will fit in a long
+    // when truncated, d will fit in a LONG64
     // but not an int
-    long l = double_to_long(2148429099.3);
+    LONG64 l = double_to_long(2148429099.3);
     // should be truncated towards 0
     if (l != 2148429099l) {
         return 1;

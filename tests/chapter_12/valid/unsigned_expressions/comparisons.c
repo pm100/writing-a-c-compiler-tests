@@ -3,8 +3,8 @@
 unsigned int one_hundred = 100u;
 unsigned int large_uint = 4294967294u; // interpreted as a signed int, this would be -2
 
-unsigned long one_hundred_ulong = 100ul;
-unsigned long large_ulong = 4294967294ul; // this would have the same value as a signed long
+unsigned LONG64 one_hundred_ulong = 100ul;
+unsigned LONG64 large_ulong = 4294967294ul; // this would have the same value as a signed LONG64
 
 int main(void) {
     // compare unsigned ints (result would be different if interpreted as signed)

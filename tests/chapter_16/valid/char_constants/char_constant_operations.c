@@ -11,7 +11,7 @@ int main(void) {
 
     // You can use character constants to specify array dimensions
     // and initialize array elements of arithmetic type
-    unsigned long array['\n'] = {1, 2, 'a', '\b', 3, 4, 5, '!', '%', '~'};
+    unsigned LONG64 array['\n'] = {1, 2, 'a', '\b', 3, 4, 5, '!', '%', '~'};
 
     if (array[2] != 97) {
         return 2;
@@ -35,7 +35,7 @@ int main(void) {
 
     // make sure array has the right length (20) by initializing a pointer to its address
     // if we've got the wrong size this will be a type error
-    unsigned long (*array_ptr)[10] = &array;
+    unsigned LONG64 (*array_ptr)[10] = &array;
 
     if (array_ptr[0][9] != '~') {
         return 7;

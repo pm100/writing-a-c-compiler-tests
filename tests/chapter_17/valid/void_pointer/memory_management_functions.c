@@ -7,10 +7,10 @@
 #endif
 #endif
 
-void *malloc(unsigned long size);
-void *realloc(void *ptr, unsigned long size);
-void *calloc(unsigned long nmemb, unsigned long size);
-void *aligned_alloc(unsigned long alignment, unsigned long size);
+void *malloc(unsigned LONG64 size);
+void *realloc(void *ptr, unsigned LONG64 size);
+void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
+void *aligned_alloc(unsigned LONG64 alignment, unsigned LONG64 size);
 void free(void *ptr);
 
 int main(void) {
@@ -52,7 +52,7 @@ int main(void) {
     // allocate a buffer with aligned_alloc, make sure it has the correct alignment
     char_buffer = aligned_alloc(256, 256);
     // make sure it's 256 byte-aligned
-    if ((unsigned long) char_buffer % 256) {
+    if ((unsigned LONG64) char_buffer % 256) {
         return 4;
     }
     free(char_buffer);

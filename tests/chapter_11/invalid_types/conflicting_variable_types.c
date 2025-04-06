@@ -1,4 +1,4 @@
-long a;
+LONG64 a;
 
 int main(void) {
     /* This declaration refers to the global 'a' variable,

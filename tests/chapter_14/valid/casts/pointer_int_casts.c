@@ -12,7 +12,7 @@
 // if the resulting pointer is misaligned. These integers' values
 // are divisible by 8, so it's safe to cast them to any pointer type.
 int i = 128;
-long l = 128l;
+LONG64 l = 128l;
 
 int int_to_pointer(void) {
     int *a = (int *) i;
@@ -21,10 +21,10 @@ int int_to_pointer(void) {
 }
 
 int pointer_to_int(void) {
-    static long l;
-    long *ptr = &l;
-    unsigned long ptr_as_long = (unsigned long) ptr;
-    /* This will be divisible by eight, since long is eight byte-aligned */
+    static LONG64 l;
+    LONG64 *ptr = &l;
+    unsigned LONG64 ptr_as_long = (unsigned LONG64) ptr;
+    /* This will be divisible by eight, since LONG64 is eight byte-aligned */
     return (ptr_as_long % 8 == 0);
 }
 
@@ -34,19 +34,19 @@ int pointer_to_int(void) {
  * upper bits are discarded; we don't cover that case here.)
  */
 
-// long to pointer and back
+// LONG64 to pointer and back
 int cast_long_round_trip(void) {
     int *ptr = (int *) l;
-    long l2 = (long) ptr;
+    LONG64 l2 = (LONG64) ptr;
     return (l == l2);
 }
 
 
 // pointer to ulong and back
 int cast_ulong_round_trip(void) {
-    long *ptr = &l;
-    unsigned long ptr_as_ulong = (unsigned long) ptr;
-    long *ptr2 = (long *) ptr_as_ulong;
+    LONG64 *ptr = &l;
+    unsigned LONG64 ptr_as_ulong = (unsigned LONG64) ptr;
+    LONG64 *ptr2 = (LONG64 *) ptr_as_ulong;
     return (ptr == ptr2);
 }
 

@@ -1,7 +1,7 @@
 /* Test comparisons between longs, making sure to exercise all rewrite rules for cmp */
 
-long l;
-long l2;
+LONG64 l;
+LONG64 l2;
 
 /* Comparisons where both operands are constants */
 int compare_constants(void) {
@@ -29,7 +29,7 @@ int l_geq_2_60(void) {
 }
 
 int uint_max_leq_l(void) {
-    /* The first operand to cmp is a variable and second is a constant (UINT_MAX as a long). */
+    /* The first operand to cmp is a variable and second is a constant (UINT_MAX as a LONG64). */
     return (4294967295l <= l);
 }
 

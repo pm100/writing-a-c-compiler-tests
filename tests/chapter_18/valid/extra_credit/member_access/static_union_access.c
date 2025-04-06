@@ -1,6 +1,6 @@
 // Test access to static union members with . and ->
 union u {
-    unsigned long l;
+    unsigned LONG64 l;
     double d;
     char arr[8];
 };

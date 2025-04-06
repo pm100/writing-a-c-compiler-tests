@@ -1,10 +1,10 @@
-long add(int a, int b) {
-    return (long) a + (long) b;
+LONG64 add(int a, int b) {
+    return (LONG64) a + (LONG64) b;
 }
 
 int main(void) {
-    long a = add(2147483645, 2147483645);
-    /* Test returning a long from a function call */
+    LONG64 a = add(2147483645, 2147483645);
+    /* Test returning a LONG64 from a function call */
     if (a == 4294967290l) {
         return 1;
     }

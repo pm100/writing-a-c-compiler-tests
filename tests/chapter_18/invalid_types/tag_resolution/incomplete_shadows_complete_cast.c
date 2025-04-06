@@ -1,5 +1,5 @@
 // test that we resolve tags in cast expressions
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 struct s {
     int a;
 };

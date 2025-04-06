@@ -4,7 +4,7 @@
 int main(void)
 {
     // This is trying to initialize nested array with type
-    // long[2] from a string literal
-    static long int nested[1][2] = {"a"};
+    // LONG64[2] from a string literal
+    static LONG64 int nested[1][2] = {"a"};
     return 0;
 }

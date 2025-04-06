@@ -23,11 +23,11 @@ int check_uint(unsigned int converted, unsigned int expected) {
     return (converted == expected);
 }
 
-int check_long(long converted, long expected) {
+int check_long(LONG64 converted, LONG64 expected) {
     return (converted == expected);
 }
 
-int check_ulong(unsigned long converted, unsigned long expected) {
+int check_ulong(unsigned LONG64 converted, unsigned LONG64 expected) {
     return (converted == expected);
 }
 
@@ -54,12 +54,12 @@ int return_extended_uchar(unsigned char c) {
     return c;
 }
 
-unsigned long return_extended_schar(signed char sc) {
+unsigned LONG64 return_extended_schar(signed char sc) {
     return sc;
 }
 
 // implicitly truncate a return value from int to unsigned char
-unsigned char return_truncated_long(long l) {
+unsigned char return_truncated_long(LONG64 l) {
     return l;
 }
 
@@ -156,7 +156,7 @@ int main(void) {
         return 16;
     }
 
-    array[1] = 9224497936761618562ul;  // unsigned long - truncated to -126
+    array[1] = 9224497936761618562ul;  // unsigned LONG64 - truncated to -126
     if (array[0] || array[2] || array[1] != -126) {
         return 17;
     }
@@ -169,7 +169,7 @@ int main(void) {
     // assign to unsigned char - same idea as for signed char
     unsigned char uchar_array[3] = {0, 0, 0};
 
-    uchar_array[1] = 17592186044416l;  // long
+    uchar_array[1] = 17592186044416l;  // LONG64
     if (uchar_array[0] || uchar_array[2] || uchar_array[1] != 0) {
         return 19;
     }
@@ -190,7 +190,7 @@ int main(void) {
         return 21;
     }
 
-    signed long l = -1;
+    signed LONG64 l = -1;
     static signed s_static =
         0;  // this is static so it can't be copy propped in Part III
     l = s_static;

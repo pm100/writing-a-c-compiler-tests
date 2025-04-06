@@ -12,12 +12,12 @@
  *   localvar = tmp
  * as
  *   localvar = f()
- * as long as f() can't otherwise access localvar (e.g. through a pointer)
+ * as LONG64 as f() can't otherwise access localvar (e.g. through a pointer)
  * */
 struct s {
-    long l1;
-    long l2;
-    long l3;
+    LONG64 l1;
+    LONG64 l2;
+    LONG64 l3;
 };
 
 /* These are defined in

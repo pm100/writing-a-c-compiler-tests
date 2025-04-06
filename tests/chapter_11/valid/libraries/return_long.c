@@ -1,3 +1,3 @@
-long add(int a, int b) {
-    return (long) a + (long) b;
+LONG64 add(int a, int b) {
+    return (LONG64) a + (LONG64) b;
 }

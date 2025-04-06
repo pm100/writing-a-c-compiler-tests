@@ -3,12 +3,12 @@ int main(void) {
 
     // define some variables
     int i = -100;
-    unsigned long ul = 13835058055282163712ul;
+    unsigned LONG64 ul = 13835058055282163712ul;
     double d = 3.5;
 
     //define some pointers to those variables
     int *i_ptr = &i;
-    unsigned long *ul_ptr = &ul;
+    unsigned LONG64 *ul_ptr = &ul;
     double *d_ptr = &d;
 
     // dereference each pointer and read value
@@ -40,7 +40,7 @@ int main(void) {
     // assign new values to the pointers, then make sure dereferencing them
     // results in the values of the new objects they point to
     int i2 = 1;
-    unsigned long ul2 = 144115196665790464ul;
+    unsigned LONG64 ul2 = 144115196665790464ul;
     double d2 = -33.3;
 
     i_ptr = &i2;

@@ -1,7 +1,7 @@
 // Test that any char array variables larger than 16 bytes are 16-byte aligned
 
 int check_aligment(char *c) {
-    unsigned long l = (unsigned long)c;
+    unsigned LONG64 l = (unsigned LONG64)c;
     return (l % 16 == 0);  // return 1 on success, 0 on failure
 }
 

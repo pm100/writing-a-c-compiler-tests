@@ -1,4 +1,4 @@
-/* Test bitwise &, |, and ^ operations on long integers.
+/* Test bitwise &, |, and ^ operations on LONG64 integers.
  * Make sure we:
  * - promote both operands to a common type;
  * - actually perform quadword (not longword) operations
@@ -7,8 +7,8 @@
  */
 int main(void) {
     // basic tests to make sure we're performing quadword operations
-    long l1 = 71777214294589695l;  // 0x00ff_00ff_00ff_00ff
-    long l2 = -4294967296;  // -2^32; upper 32 bits are 1, lower 32 bits are 0
+    LONG64 l1 = 71777214294589695l;  // 0x00ff_00ff_00ff_00ff
+    LONG64 l2 = -4294967296;  // -2^32; upper 32 bits are 1, lower 32 bits are 0
 
     if ((l1 & l2) != 71777214277877760l /* 0x00ff_00ff_0000_0000 */) {
         return 1;
@@ -38,7 +38,7 @@ int main(void) {
     }
 
     /* Typechecking: promote both operands to common type */
-    long l = 4611686018427387903l;  // 0x3fff_ffff_ffff_ffff
+    LONG64 l = 4611686018427387903l;  // 0x3fff_ffff_ffff_ffff
     // if we try to use i in longword bitwise op without sign-extending it
     // first, we may try to read neighboring values l and i2
     int i = -1073741824;  // 0b1100....0, or 0xc000_0000

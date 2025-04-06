@@ -18,7 +18,7 @@ int main(void) {
         return 4;
     }
 
-    unsigned long l = 18446744073709551614UL;
+    unsigned LONG64 l = 18446744073709551614UL;
     // Postfix ++
     if (l++ != 18446744073709551614UL) {
         return 5;

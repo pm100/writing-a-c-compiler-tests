@@ -4,7 +4,7 @@
  */
 
 int check_alignment(int *ptr) {
-    unsigned long addr = (unsigned long) ptr;
+    unsigned LONG64 addr = (unsigned LONG64) ptr;
     return (addr % 16 == 0);
 }
 

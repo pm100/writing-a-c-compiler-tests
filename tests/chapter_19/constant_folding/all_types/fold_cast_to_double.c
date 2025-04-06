@@ -21,7 +21,7 @@ double target_from_long(void) {
     return (double)4611686018427388416l;
 }
 
-// convert a value outside the range of signed long
+// convert a value outside the range of signed LONG64
 // (From double-rounding example in Chapter 13, "Converting an Unsigned Integer
 // to a double")
 double target_from_ulong(void) {

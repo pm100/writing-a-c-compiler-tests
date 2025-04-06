@@ -2,7 +2,7 @@
 // are constant
 
 union u {
-    long l;
+    LONG64 l;
 };
 
 struct has_union {
@@ -11,7 +11,7 @@ struct has_union {
     char c;
 };
 
-long some_var = 10l;
+LONG64 some_var = 10l;
 
 struct has_union some_struct = {1,
                                 {some_var},  // INVALID - not constant

@@ -4,7 +4,7 @@
 extern unsigned int ui;
 unsigned int return_uint(void);
 int return_uint_as_signed(void);
-long return_uint_as_long(void);
+LONG64 return_uint_as_long(void);
 
 int main(void) {
     if (ui != 4294967200u)
@@ -16,11 +16,11 @@ int main(void) {
     /* Make sure that our update to ui is visible in the other translation unit,
      * and that we correctly track function return types
      */
-    long result = (long) return_uint();
+    LONG64 result = (LONG64) return_uint();
     if (result != 4294967295l)
         return 0;
 
-    result = (long) return_uint_as_signed();
+    result = (LONG64) return_uint_as_signed();
     if (result != -1l)
         return 0;
 

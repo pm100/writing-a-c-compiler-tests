@@ -14,7 +14,7 @@
 struct s {
     int a;
     int b;
-    long l;
+    LONG64 l;
 };
 
 double glob = 20.0;

@@ -10,29 +10,29 @@
 #include "../util.h"
 
 unsigned int glob_three = 3;
-long glob_11 = 11l;
+LONG64 glob_11 = 11l;
 double glob_12 = 12.0;
-long glob_23 = 23l;
+LONG64 glob_23 = 23l;
 double glob_24 = 24.0;
 
 int target(void) {
     // This is our spill candidate: it has the highest degree and is
     // used only once.
-    long should_spill = glob_three + 3;
+    LONG64 should_spill = glob_three + 3;
 
     // create 12 pseudos that all interfere w/ should_spill and each other;
     // this forces a spill, since only 12 hard registers are available
     unsigned int one = glob_three - 2;
-    long two = one + one;
-    unsigned long three = 2 + one;
+    LONG64 two = one + one;
+    unsigned LONG64 three = 2 + one;
     char four = two * two;
     signed char five = 6 - one;
     int six = two * three;
     unsigned char seven = one + 6;
-    long eight = two * 4;
-    unsigned long nine = three * three;
+    LONG64 eight = two * 4;
+    unsigned LONG64 nine = three * three;
     char ten = four + six;
-    long* eleven = &glob_11;
+    LONG64* eleven = &glob_11;
     double* twelve = &glob_12;
 
     // validate one through twelve
@@ -43,16 +43,16 @@ int target(void) {
     // and should_spill, so should_spill will have more conflicts than other
     // pseudoregisters
     unsigned int thirteen = 10 + glob_three;
-    long fourteen = thirteen + 1;
-    unsigned long fifteen = 28 - thirteen;
+    LONG64 fourteen = thirteen + 1;
+    unsigned LONG64 fifteen = 28 - thirteen;
     char sixteen = fourteen + 2;
     signed char seventeen = 4 + thirteen;
     int eighteen = 32 - fourteen;
     unsigned char nineteen = 35 - sixteen;
     unsigned int twenty = fifteen + 5;
-    long twenty_one = thirteen * 2 - 5;
-    unsigned long twenty_two = fifteen + 7;
-    long* twenty_three = &glob_23;
+    LONG64 twenty_one = thirteen * 2 - 5;
+    unsigned LONG64 twenty_two = fifteen + 7;
+    LONG64* twenty_three = &glob_23;
     double* twenty_four = &glob_24;
 
     // validate thirteen through twenty-four

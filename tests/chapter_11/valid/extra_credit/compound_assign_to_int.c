@@ -4,8 +4,8 @@ int main(void) {
     int c = -5000000;
 
     /* This statement is evaluated as follows:
-     * 1. sign-extend i to a long with value -20
-     * 2. add this long to 2147483648, resulting in the long 2147483628,
+     * 1. sign-extend i to a LONG64 with value -20
+     * 2. add this LONG64 to 2147483648, resulting in the LONG64 2147483628,
      * 3. convert this to an int with value 2147483628 (this value
      * can be represented as an int)
      */
@@ -20,7 +20,7 @@ int main(void) {
     }
 
     // b /= -2^35 + 1
-    // if we try to perform int (rather than long)
+    // if we try to perform int (rather than LONG64)
     // division, we'll interpret this value as 1 and
     // b's value won't change.
     b /= -34359738367l;

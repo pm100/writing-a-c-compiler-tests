@@ -1,4 +1,4 @@
-/* Test out different ways to declare an unsigned int or long */
+/* Test out different ways to declare an unsigned int or LONG64 */
 
 #ifdef SUPPRESS_WARNINGS
 #ifndef __clang__
@@ -10,10 +10,10 @@ unsigned u;
 int unsigned u;
 unsigned int u = 6;
 
-unsigned long ul;
-long unsigned ul;
-long int unsigned ul;
-unsigned int long ul = 4;
+unsigned LONG64 ul;
+LONG64 unsigned ul;
+LONG64 int unsigned ul;
+unsigned int LONG64 ul = 4;
 
 int main(void) {
     if (u != 6u) {
@@ -21,9 +21,9 @@ int main(void) {
     }
 
     /* redeclare ul several times */
-    long extern unsigned ul;
-    unsigned long extern ul;
-    int extern unsigned long ul;
+    LONG64 extern unsigned ul;
+    unsigned LONG64 extern ul;
+    int extern unsigned LONG64 ul;
 
     if (ul != 4ul) {
         return 2;

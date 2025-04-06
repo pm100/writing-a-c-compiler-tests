@@ -1,6 +1,6 @@
 /* A simple test of allocating and freeing memory */
 
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 void free(void *ptr);
 
 int main(void) {

@@ -19,18 +19,18 @@ unsigned target_to_uint(void) {
     return (unsigned)2147483750.5;
 }
 
-long target_to_long(void) {
+LONG64 target_to_long(void) {
     // nearest representable double is 9223372036854774784.0,
-    // which will be converted to long int 9223372036854774784
-    return (long)9223372036854774783.1;
+    // which will be converted to LONG64 int 9223372036854774784
+    return (LONG64)9223372036854774783.1;
 }
 
-unsigned long target_to_ulong(void) {
-    // constant in the range of ulong but not long
-    return (unsigned long)13835058055282163712.5;
+unsigned LONG64 target_to_ulong(void) {
+    // constant in the range of ulong but not LONG64
+    return (unsigned LONG64)13835058055282163712.5;
 }
 
-unsigned long target_implicit(void) {
+unsigned LONG64 target_implicit(void) {
     // same as target_to_ulong but cast is implicit; make sure we still constant fold it
     return 3458764513821589504.0;
 }

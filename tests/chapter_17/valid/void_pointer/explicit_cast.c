@@ -10,9 +10,9 @@
 #endif
 #endif
 
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 void free(void *ptr);
-void *memcpy(void *s1, void *s2, unsigned long n);
+void *memcpy(void *s1, void *s2, unsigned LONG64 n);
 
 int main(void) {
     // start with casts between void * and other types
@@ -33,7 +33,7 @@ int main(void) {
     }
 
     // now test cast from void * to integer
-    unsigned long ul = (unsigned long)ptr;
+    unsigned LONG64 ul = (unsigned LONG64)ptr;
     // address returned by malloc must have suitable alignment
     // for any basic data type, so it's divisible by 8
     if (ul % 8) {
@@ -43,12 +43,12 @@ int main(void) {
     free(ptr);
 
     // can also cast 0 to null pointer and back
-    long zero = 0;
+    LONG64 zero = 0;
     ptr = (void *) zero;
     if (ptr) {
         return 4;
     }
-    zero = (long) ptr;
+    zero = (LONG64) ptr;
     if (zero) {
         return 5;
     }

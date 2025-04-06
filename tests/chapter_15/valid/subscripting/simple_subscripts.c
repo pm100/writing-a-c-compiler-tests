@@ -29,7 +29,7 @@ int integer_types(unsigned *arr, unsigned expected) {
 }
 
 // x[i] == i[x] - doesn't matter which is the index
-int reverse_subscript(long *arr, long expected)  {
+int reverse_subscript(LONG64 *arr, LONG64 expected)  {
     if (arr[3] != expected) {
         return 5;
     }
@@ -116,7 +116,7 @@ int main(void) {
         return check;
     }
 
-    long int long_arr[4] = {100, 102, 104, 106};
+    LONG64 int long_arr[4] = {100, 102, 104, 106};
     // long_arr[3] == 106
     check = reverse_subscript(long_arr, 106);
     if (check) {

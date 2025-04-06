@@ -3,7 +3,7 @@
 unsigned unsigned_arr[4] = {4294967295U, 4294967294U, 4294967293U, 4294967292U};
 
 int idx = 2;
-long long_idx = 1;
+LONG64 long_idx = 1;
 
 int main(void) {
     long_idx = -long_idx; // -1

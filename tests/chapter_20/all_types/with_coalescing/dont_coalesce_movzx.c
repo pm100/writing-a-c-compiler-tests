@@ -1,12 +1,12 @@
 /* When converting uint to double, make sure we use MovZeroExtend rather than
- * mov to convert uint to long before converting to double, and that
+ * mov to convert uint to LONG64 before converting to double, and that
  * we don't coalesce the MovZeroExtend instruction. Just validate
  * behavior, don't inspect assembly.
  * */
 
 #include "../util.h"
 
-long one = 1l;
+LONG64 one = 1l;
 
 int main(void) {
     // Assembly will be:
@@ -23,7 +23,7 @@ int main(void) {
     // we'll coalesce tmp1, neg1, tmp2, and uint_max into r,
     // and will end up converting -1 to a double instead of 4294967295u
 
-    long neg1 = -one;
+    LONG64 neg1 = -one;
     unsigned int uint_max = (unsigned int)neg1;
     double d = (double)uint_max;
     check_one_double(d, 4294967295.0);

@@ -9,15 +9,15 @@
 #endif
 
 
-long *get_null_pointer(void) {
+LONG64 *get_null_pointer(void) {
     return 0;
 }
 
 int main(void)
 {
-    long x;
-    long *ptr = &x;
-    long *null_ptr = get_null_pointer();
+    LONG64 x;
+    LONG64 *ptr = &x;
+    LONG64 *null_ptr = get_null_pointer();
 
     // note that pointers can appear in boolean expressions
     // with operands of any other type

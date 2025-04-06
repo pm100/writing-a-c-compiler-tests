@@ -10,22 +10,22 @@
 #include "../util.h"
 
 struct s {
-    long l;    // RDI
+    LONG64 l;    // RDI
     double d;  // XMM0
 };
 
-long glob = 100;
+LONG64 glob = 100;
 double glob_d = 200.0;
 
-long x = 0;
+LONG64 x = 0;
 double y = 0;
 
 // defined in mixed_type_funcall_generates_args_lib.c,
 // exits early with return code -1 if args don't have expected values
-int callee(struct s s1, long a, double b);
+int callee(struct s s1, LONG64 a, double b);
 
 int main(void) {
-    long a = glob + 1;        // 101
+    LONG64 a = glob + 1;        // 101
     double b = glob_d + 2.0;  // 202.0
 
     struct s s1 = {-50, -40.0};

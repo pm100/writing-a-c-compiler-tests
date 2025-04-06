@@ -1,4 +1,4 @@
-/* Test out different ways to declare a signed int or long */
+/* Test out different ways to declare a signed int or LONG64 */
 
 #ifdef SUPPRESS_WARNINGS
 #ifndef __clang__
@@ -11,14 +11,14 @@ signed extern i;
 int static signed i = 5;
 signed int static i;
 
-long signed l;
-long l = 7;
-int long l;
-signed long int l;
+LONG64 signed l;
+LONG64 l = 7;
+int LONG64 l;
+signed LONG64 int l;
 
 int main(void) {
     int signed extern i;
-    extern signed long l;
+    extern signed LONG64 l;
 
     if (i != 5) {
         return 1;

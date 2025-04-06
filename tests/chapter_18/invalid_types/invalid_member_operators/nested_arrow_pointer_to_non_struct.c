@@ -1,5 +1,5 @@
 struct s {
-    long l;
+    LONG64 l;
 };
 
 struct has_ptr {

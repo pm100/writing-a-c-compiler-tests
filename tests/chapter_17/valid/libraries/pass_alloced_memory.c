@@ -1,5 +1,5 @@
-void *calloc(unsigned long nmemb, unsigned long size);
-void *memset(void *s, int c, unsigned long n);
+void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
+void *memset(void *s, int c, unsigned LONG64 n);
 void free(void *ptr);
 
 void *get_100_zeroed_bytes(void) {

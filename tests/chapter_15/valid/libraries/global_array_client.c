@@ -1,5 +1,5 @@
 /* Make sure we can access an array declared in another translation unit */
-extern long arr[4];
+extern LONG64 arr[4];
 int double_each_element(void);
 
 int main(void) {

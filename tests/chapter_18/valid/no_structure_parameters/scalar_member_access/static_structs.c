@@ -9,7 +9,7 @@
 #endif
 #endif
 
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 int putchar(int ch);
 int puts(char *s);
 

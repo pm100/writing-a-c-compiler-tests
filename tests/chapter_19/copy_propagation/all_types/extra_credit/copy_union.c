@@ -1,7 +1,7 @@
 /* Propagate copies of whole unions */
 
 union u {
-    long l;
+    LONG64 l;
     int i;
 };
 

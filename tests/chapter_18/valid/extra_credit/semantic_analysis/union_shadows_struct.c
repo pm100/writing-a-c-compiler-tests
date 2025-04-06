@@ -10,7 +10,7 @@ int main(void) {
     // this shadows the declaration of 'struct tag'
     union tag {
         int x;
-        long y;
+        LONG64 y;
     };
     union tag local_union = {100};
     if (global_struct.a != 1) {

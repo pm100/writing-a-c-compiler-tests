@@ -2,11 +2,11 @@
 #include <stdlib.h>
 
 struct s {
-    long l;
+    LONG64 l;
     double d;
 };
 
-int callee(struct s s1, long a, double b) {
+int callee(struct s s1, LONG64 a, double b) {
     if (s1.l != -50) {
         printf("Expected s1.l to be -50, found %ld\n", s1.l);
         exit(-1);

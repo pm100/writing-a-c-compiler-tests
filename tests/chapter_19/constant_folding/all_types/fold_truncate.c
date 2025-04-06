@@ -15,7 +15,7 @@
 #endif
 #endif
 
-// truncate long
+// truncate LONG64
 int long_to_int(void) {
     // 2^45 + 2^35 + 1234
     return (int)35218731828434l;
@@ -41,7 +41,7 @@ unsigned char long_to_uchar(void) {
     return (unsigned char)4294967295UL;
 }
 
-// truncate unsigned long
+// truncate unsigned LONG64
 int ulong_to_int(void) {
     // ULONG_MAX
     return (int)18446744073709551615UL;

@@ -1,7 +1,7 @@
 /* Test finding the common type of void * and other pointer types (it's always
  * void *) */
 
-void *calloc(unsigned long nmemb, unsigned long size);
+void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
 void free(void *ptr);
 
 int main(void) {

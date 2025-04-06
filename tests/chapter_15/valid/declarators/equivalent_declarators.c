@@ -1,9 +1,9 @@
 /* Declare the same global array multiple times w/ equivalent declarators */
 
 // an array of four longs
-long int(arr)[4] = {1, 2, 3, 4};
+LONG64 int(arr)[4] = {1, 2, 3, 4};
 
-int long arr[4ul];
+int LONG64 arr[4ul];
 
 // a pointer to a two-dimensional array
 int (*ptr_to_arr)[3][6l];

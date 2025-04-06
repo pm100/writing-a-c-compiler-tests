@@ -1,7 +1,7 @@
 /* Test using -> to iterate through a linked list
  * and exercise chained member access of the form x->y->
  * */
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 // linked_list_node type from Listing 18-6
 struct linked_list_node {

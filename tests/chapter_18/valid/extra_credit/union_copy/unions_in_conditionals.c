@@ -1,7 +1,7 @@
 // Like structures, unions can appear in conditional expression
 
 union u {
-    long l;
+    LONG64 l;
     int i;
     char c;
 };

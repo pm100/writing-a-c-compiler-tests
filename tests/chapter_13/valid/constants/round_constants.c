@@ -27,7 +27,7 @@ int main(void) {
      * This incorrect double rounding would be equivalent to:
      *     return ( (double) 9223372036854776832.5l == 9223372036854777856.0);
      * You can try this out and see that it returns 0.
-     * (note that the "l" suffix above indicates the "long double" type,
+     * (note that the "l" suffix above indicates the "LONG64 double" type,
      * which has 80-bit precision)
      */
     if (9223372036854776832.5 != 9223372036854777856.0) {

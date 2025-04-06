@@ -3,12 +3,12 @@
 int main(void) {
     // define some variables
     unsigned int i = 2185232384u;
-    signed long l = 144115196665790464l;
+    signed LONG64 l = 144115196665790464l;
     double d = 1e50;
 
     // define pointers to those variables
     unsigned *i_ptr = &i;
-    long *l_ptr = &l;
+    LONG64 *l_ptr = &l;
     double *d_ptr = &d;
 
     // assign to dereferenced pointers

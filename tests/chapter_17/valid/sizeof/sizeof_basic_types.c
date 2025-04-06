@@ -20,10 +20,10 @@ int main(void) {
         return 5;
     }
 
-    if (sizeof(long) != 8) {
+    if (sizeof(LONG64) != 8) {
         return 6;
     }
-    if (sizeof(unsigned long) != 8) {
+    if (sizeof(unsigned LONG64) != 8) {
         return 7;
     }
 

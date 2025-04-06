@@ -69,7 +69,7 @@ int pass_longword(void) {
 
 // test case #2: passing a struct holding an eight-byte int
 struct one_quadword {
-    long l;
+    LONG64 l;
 };
 
 void take_quadword(struct one_quadword s, int code) {

@@ -1,6 +1,6 @@
-// make sure we support prefix and postfix ++/-- on long variables
+// make sure we support prefix and postfix ++/-- on LONG64 variables
 int main(void) {
-    long x = -9223372036854775807l;
+    LONG64 x = -9223372036854775807l;
 
     // postfix ++
     if (x++ != -9223372036854775807l) {

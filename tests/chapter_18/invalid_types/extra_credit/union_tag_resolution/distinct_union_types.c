@@ -1,7 +1,7 @@
 int foo(void) {
     union s {
         int a;
-        long b;
+        LONG64 b;
     };
     union s result = {1};
     return result.a;

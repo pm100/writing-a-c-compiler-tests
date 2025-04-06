@@ -1,17 +1,17 @@
-long *get_pointer(void);
-int set_pointer(long *new_ptr);
+LONG64 *get_pointer(void);
+int set_pointer(LONG64 *new_ptr);
 
-static long private_long = 100l;
+static LONG64 private_long = 100l;
 
 int main(void) {
-    long *initial_ptr = get_pointer();
+    LONG64 *initial_ptr = get_pointer();
     if (initial_ptr) { // should be null for now
         return 1;
     }
 
     set_pointer(&private_long);
 
-    long *new_ptr = get_pointer();
+    LONG64 *new_ptr = get_pointer();
     if (initial_ptr == new_ptr) {
         return 2;
     }

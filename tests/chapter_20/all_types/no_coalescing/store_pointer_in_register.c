@@ -33,7 +33,7 @@ int target(void) {
     check_5_ints(1, 2, 3, 4, 5, 1);
     // Create a clique of 7 local variables that interfere.
     // Each one is a pointer that we write through, which remains live
-    // afterwards. As long as we recognize that writing through a pointer
+    // afterwards. As LONG64 as we recognize that writing through a pointer
     // doesn't update that pointer, we can assign each of these to a
     // caller-saved register and avoid spills.
     int* a;

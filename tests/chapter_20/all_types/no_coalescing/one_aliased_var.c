@@ -24,7 +24,7 @@ int target(int one, int two, int three, double one_d) {
     double *d_ptr = &one_d;
     check_one_double(deref(d_ptr), 1.0);
     increment(ptr);  // increment one
-    long five = two + three;
+    LONG64 five = two + three;
     check_one_int(one, 2);
     check_one_long(five, 5l);
     return 0;

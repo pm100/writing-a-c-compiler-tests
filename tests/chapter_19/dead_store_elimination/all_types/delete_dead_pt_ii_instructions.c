@@ -7,7 +7,7 @@
 #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif
 
-long l = 1l;
+LONG64 l = 1l;
 int i = 2;
 unsigned int u = 30u;
 
@@ -19,11 +19,11 @@ struct s {
 
 int target(void) {
     // everything except the return instruction should be deleted
-    long x = (long) i; // dead sign extend
-    unsigned long y = (unsigned long) u; // dead zero extend
+    LONG64 x = (LONG64) i; // dead sign extend
+    unsigned LONG64 y = (unsigned LONG64) u; // dead zero extend
     double d = (double) y + (double) i; // dead IntToDouble and UIntToDouble
-    x = (long) d; // dead DoubleToInt
-    y = (unsigned long) d; // dead DoubleToUInt
+    x = (LONG64) d; // dead DoubleToInt
+    y = (unsigned LONG64) d; // dead DoubleToUInt
     int arr[3] = {1, 2, 3}; // dead CopyToOffset
     int j = arr[2]; // dead AddPtr and Load
     int *ptr = &i; // dead GetAddress

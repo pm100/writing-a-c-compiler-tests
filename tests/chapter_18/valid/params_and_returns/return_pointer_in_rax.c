@@ -6,9 +6,9 @@
 
 // This struct will be passed in memory
 struct s {
-    long l1;
-    long l2;
-    long l3;
+    LONG64 l1;
+    LONG64 l2;
+    LONG64 l3;
 };
 
 

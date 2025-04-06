@@ -15,8 +15,8 @@ int test_movsx_src(int i) {
     // we'll coalesce i into EDI
     // if we don't think it's live after check_one_int
     check_one_int(i - 10, -5);
-    long l = 0;
-    l = (long)i;
+    LONG64 l = 0;
+    l = (LONG64)i;
     check_one_long(l, 5l);
     return 0;
 }
@@ -29,14 +29,14 @@ int test_movsx_dst(void) {
     // we won't recognize that they conflict, and we'll put at least
     // two of them in the same pseudoregister.
     // Use a mix of sign-extension from char and from int.
-    unsigned long a = id(-1);
-    unsigned long b = id(2);
+    unsigned LONG64 a = id(-1);
+    unsigned LONG64 b = id(2);
     char neg_char = -glob_char;
     char not_char = ~glob_char;
     int c = (int)glob_char;
-    long d = id(4);
+    LONG64 d = id(4);
     unsigned int e = (unsigned int)neg_char;
-    long f = (long) not_char;
+    LONG64 f = (LONG64) not_char;
     check_one_ulong(a, 18446744073709551615ul);
     check_one_ulong(b, 2ul);
     check_one_int(c, 10);
@@ -58,7 +58,7 @@ int test_movzx_src(unsigned int u) {
     // we'll coalesce u into EDI if we don't think it's
     // live after check_one_uint
     check_one_uint(u + 10u, 30u);
-    long l = (long)u;
+    LONG64 l = (LONG64)u;
     check_one_long(l, 20l);
     return 0;
 }
@@ -71,12 +71,12 @@ int test_movzx_dst(void) {
     // if we don't recognize that MovZeroExtend updates its destination,
     // we won't recognize that they conflict, and we'll put at least
     // two of them in the same pseudoregister.
-    long a = (long)unsigned_id(2000u);
-    unsigned long b = (unsigned long)unsigned_id(1000u);
-    unsigned long c = (unsigned long)unsigned_id(255u);
-    long d = (long)unsigned_id(4294967295U);
-    long e = (long)unsigned_id(2147483650u);
-    unsigned long f = (unsigned long)unsigned_id(80u);
+    LONG64 a = (LONG64)unsigned_id(2000u);
+    unsigned LONG64 b = (unsigned LONG64)unsigned_id(1000u);
+    unsigned LONG64 c = (unsigned LONG64)unsigned_id(255u);
+    LONG64 d = (LONG64)unsigned_id(4294967295U);
+    LONG64 e = (LONG64)unsigned_id(2147483650u);
+    unsigned LONG64 f = (unsigned LONG64)unsigned_id(80u);
 
     check_one_long(a, 2000l);
     check_one_ulong(b, 1000ul);
@@ -93,7 +93,7 @@ int test_movzbq_src(unsigned char c) {
     // think it's live after check_one_uchar
     unsigned char d = c + 1;
     check_one_uchar(d, 13);
-    long l = (long)c;
+    LONG64 l = (LONG64)c;
     check_one_long(l, 12);
     return 0;
 }
@@ -106,10 +106,10 @@ int test_movzb_dst(void) {
     // two of them in the same pseudoregister.
     int a = (int)uchar_id(200);
     unsigned int b = (unsigned int)uchar_id(100);
-    unsigned long c = (unsigned long)uchar_id(255);
-    long d = (long)uchar_id(77);
-    long e = (long)uchar_id(125);
-    unsigned long f = (unsigned long)uchar_id(80);
+    unsigned LONG64 c = (unsigned LONG64)uchar_id(255);
+    LONG64 d = (LONG64)uchar_id(77);
+    LONG64 e = (LONG64)uchar_id(125);
+    unsigned LONG64 f = (unsigned LONG64)uchar_id(80);
 
     check_one_int(a, 200);
     check_one_uint(b, 100u);
@@ -134,7 +134,7 @@ int test_cvtsi2sd_src(int i) {
 
 /* Test that we recognize cvtsi2sd updates its destination */
 int global_int = 5000;
-long global_long = 5005;
+LONG64 global_long = 5005;
 int test_cvtsi2sd_dst(void) {
     // Create 15 floating-point pseudos defined via cvtsi2sd;
     // if we don't recognize that this instruction updates its destination
@@ -157,7 +157,7 @@ int test_cvtsi2sd_dst(void) {
     double d12 = (double)(global_int + 12);
     double d13 = (double)(global_int + 13);
     double d14 = (double)(global_int + 14);
-    global_long = (long)d14;
+    global_long = (LONG64)d14;
     check_14_doubles(d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13,
                      5000);
     check_one_int(global_int, 5000);
@@ -187,11 +187,11 @@ int test_cvttsd2si_dst(void) {
     // in the same register instead of spilling one of them.
     // Use a mix of cvttsd2sil and cvttsd2siq
     int a = (int)dbl_id(-200.0);
-    long b = (long)dbl_id(-300.0);
+    LONG64 b = (LONG64)dbl_id(-300.0);
     int c = (int)dbl_id(-400.0);
-    long d = (long)dbl_id(-500.0);
+    LONG64 d = (LONG64)dbl_id(-500.0);
     int e = (int)dbl_id(-600.0);
-    long f = (long)dbl_id(-700.0);
+    LONG64 f = (LONG64)dbl_id(-700.0);
     check_one_int(a, -200);
     check_one_long(b, -300l);
     check_one_int(c, -400);

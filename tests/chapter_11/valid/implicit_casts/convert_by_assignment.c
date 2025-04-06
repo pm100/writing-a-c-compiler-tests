@@ -13,15 +13,15 @@
 #endif
 #endif
 
-int return_truncated_long(long l) {
+int return_truncated_long(LONG64 l) {
     return l;
 }
 
-long return_extended_int(int i) {
+LONG64 return_extended_int(int i) {
     return i;
 }
 
-int truncate_on_assignment(long l, int expected) {
+int truncate_on_assignment(LONG64 l, int expected) {
     int result = l; // implicit conversion truncates l
     return result == expected;
 }
@@ -31,10 +31,10 @@ int main(void) {
     // return statements
 
     /* return_truncated_long will truncate 2^32 + 2 to 2
-     * assigning it to result converts this to a long
+     * assigning it to result converts this to a LONG64
      * but preserves its value.
      */
-    long result = return_truncated_long(4294967298l);
+    LONG64 result = return_truncated_long(4294967298l);
     if (result != 2l) {
         return 1;
     }

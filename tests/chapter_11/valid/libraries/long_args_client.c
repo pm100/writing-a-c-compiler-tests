@@ -2,7 +2,7 @@
  * but split across multiple files.
  */
 
-int test_sum(int a, int b, int c, long d, int e, long f, int g, int h, long i);
+int test_sum(int a, int b, int c, LONG64 d, int e, LONG64 f, int g, int h, LONG64 i);
 
 int main(void) {
     return test_sum(0, 0, 0, 34359738368l, 0, 34359738368l, 0, 0, 34359738368l);

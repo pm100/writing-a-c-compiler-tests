@@ -1,6 +1,6 @@
-/* Test that a long static initializer for an int variable
+/* Test that a LONG64 static initializer for an int variable
  * is truncated to an int,
- * and an int static initializer for a long variable preserves the same value
+ * and an int static initializer for a LONG64 variable preserves the same value
  */
 
 #ifdef SUPPRESS_WARNINGS
@@ -12,7 +12,7 @@
 #endif
 
 int i = 8589934592l; // 2^33, truncated to 0
-long j = 123456;
+LONG64 j = 123456;
 
 int main(void) {
     if (i != 0) {

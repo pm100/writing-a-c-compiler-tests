@@ -13,7 +13,7 @@
 // library functions
 int strcmp(char *s1, char *s2);
 int puts(char *s);
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 struct s {
     int member1;

@@ -8,7 +8,7 @@
 int main(void) {
     static signed char sc = 10;
     unsigned int u = 10000u;
-    long l = -99999;
+    LONG64 l = -99999;
 
     if (sizeof(sc &= l) != 1) {
         return 1;  // fail

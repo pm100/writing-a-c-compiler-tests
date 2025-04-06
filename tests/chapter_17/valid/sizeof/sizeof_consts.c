@@ -17,12 +17,12 @@ int main(void) {
         return 3;
     }
 
-    // long
+    // LONG64
     if (sizeof 2l != 8) {
         return 4;
     }
 
-    // unsigned long
+    // unsigned LONG64
     if (sizeof 0ul != 8) {
         return 5;
     }

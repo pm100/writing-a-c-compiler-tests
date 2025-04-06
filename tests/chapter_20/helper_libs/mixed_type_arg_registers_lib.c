@@ -14,7 +14,7 @@ struct s1 {
 
 struct s2 {
     // RSI
-    unsigned long ul;
+    unsigned LONG64 ul;
     // XMM1
     double d;
 };
@@ -68,7 +68,7 @@ int callee(struct s1 a, struct s2 b, char c, struct s3 in_mem) {
     return 0;
 }
 
-int check_some_args(int one, long two, unsigned int three, unsigned long four,
+int check_some_args(int one, LONG64 two, unsigned int three, unsigned LONG64 four,
                     char five, unsigned char six, signed char seven) {
     if (one != 1) {
         printf("Expected one to have value 1, actual value was %d\n", one);

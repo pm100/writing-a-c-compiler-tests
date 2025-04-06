@@ -2,7 +2,7 @@
 
 int main(void) {
 
-    // shift int using long shift count
+    // shift int using LONG64 shift count
     int x = 100;
     x <<= 22l;
     if (x != 419430400) {
@@ -19,8 +19,8 @@ int main(void) {
         return 3;
     }
 
-    // now try shifting a long with an int shift count
-    long l = 12345l;
+    // now try shifting a LONG64 with an int shift count
+    LONG64 l = 12345l;
     if ((l <<= 33) != 106042742538240l) {
         return 4;
     }

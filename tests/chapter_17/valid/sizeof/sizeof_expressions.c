@@ -4,7 +4,7 @@
 #pragma clang diagnostic ignored "-Wunevaluated-expression"
 #endif
 
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 void free(void *ptr);
 
 int main(void) {
@@ -39,7 +39,7 @@ int main(void) {
         return 5;
     }
 
-    // result type is long
+    // result type is LONG64
     if (sizeof (d ? c : 10l) != 8) {
         return 6;
     }

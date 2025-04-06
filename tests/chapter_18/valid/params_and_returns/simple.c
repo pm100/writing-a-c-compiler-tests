@@ -8,7 +8,7 @@ struct pair {
 
 struct pair2 {
     double d;
-    long l;
+    LONG64 l;
 };
 
 /* construct a pair2 by multiplying each value from pair1 by 2 */

@@ -7,37 +7,37 @@
 #endif
 
 /* These declarations all look slightly different,
- * but they all declare 'a' as a static long, so they don't conflict.
+ * but they all declare 'a' as a static LONG64, so they don't conflict.
  */
-static int long a;
-int static long a;
-long static a;
+static int LONG64 a;
+int static LONG64 a;
+LONG64 static a;
 
 /* These declarations all look slightly different,
  * but they all declare 'my_function' as a function
- * with three long parameters and an int return value,
+ * with three LONG64 parameters and an int return value,
  * so they don't conflict.
  */
-int my_function(long a, long int b, int long c);
-int my_function(long int x, int long y, long z) {
+int my_function(LONG64 a, LONG64 int b, int LONG64 c);
+int my_function(LONG64 int x, int LONG64 y, LONG64 z) {
     return x + y + z;
 }
 
 int main(void) {
-    /* Several different ways to declare local long variables */
-    long x = 1l;
-    long int y = 2l;
-    int long z = 3l;
+    /* Several different ways to declare local LONG64 variables */
+    LONG64 x = 1l;
+    LONG64 int y = 2l;
+    int LONG64 z = 3l;
 
     /* This links to the file-scope declarations of 'a' above */
-    extern long a;
+    extern LONG64 a;
     a = 4;
 
-    /* make sure we can use long type specifier in for loop initializer
+    /* make sure we can use LONG64 type specifier in for loop initializer
      * i is 2^40 so this loop should have 41 iterations
     */
    int sum = 0;
-    for (long i = 1099511627776l; i > 0; i = i / 2) {
+    for (LONG64 i = 1099511627776l; i > 0; i = i / 2) {
         sum = sum + 1;
     }
 

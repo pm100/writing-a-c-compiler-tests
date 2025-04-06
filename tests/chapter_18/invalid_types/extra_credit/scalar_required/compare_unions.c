@@ -1,6 +1,6 @@
 // Can't compare objects of union type
 
-union u { long l; };
+union u { LONG64 l; };
 
 int main(void){
     union u x = {1};

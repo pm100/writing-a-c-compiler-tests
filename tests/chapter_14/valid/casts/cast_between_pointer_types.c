@@ -2,7 +2,7 @@
 
 int check_null_ptr_cast(void) {
     /* You can cast a null pointer to any pointer type and the result is still a null pointer */
-    static long *long_ptr = 0; // make this static so we don't optimize away this function
+    static LONG64 *long_ptr = 0; // make this static so we don't optimize away this function
     double *dbl_ptr = (double *)long_ptr;
     unsigned int *int_ptr = (unsigned int *)long_ptr;
     int **ptr_ptr = (int **)long_ptr;
@@ -28,10 +28,10 @@ int check_round_trip(void) {
      * result is misaligned for the new type; in this case,
      * we're only dealing with pointers to 8 byte-aligned types so it's not a problem
      */
-    long l = -1;
-    long *long_ptr = &l;
+    LONG64 l = -1;
+    LONG64 *long_ptr = &l;
     double *dbl_ptr = (double *)long_ptr;
-    long *other_long_ptr = (long *)dbl_ptr;
+    LONG64 *other_long_ptr = (LONG64 *)dbl_ptr;
     if (*other_long_ptr != -1) {
         return 5;
     }

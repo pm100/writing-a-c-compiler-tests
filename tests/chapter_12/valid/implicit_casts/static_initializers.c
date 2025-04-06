@@ -22,17 +22,17 @@ int i = 2147483650u;
 /* This should be initialized to -9223372036854775716,
  * or 9223372036854775900 - 2^64
  */
-long l = 9223372036854775900u; // note: this has type unsigned long
+LONG64 l = 9223372036854775900u; // note: this has type unsigned LONG64
 
-// this can be converted to a long with no change in value
-long l2 = 2147483650u;
+// this can be converted to a LONG64 with no change in value
+LONG64 l2 = 2147483650u;
 
-// any unsigned int can be converted to an unsigned long w/ no change in value
-unsigned long ul = 4294967294u;
+// any unsigned int can be converted to an unsigned LONG64 w/ no change in value
+unsigned LONG64 ul = 4294967294u;
 
-/* any signed long _literal_ can be converted to an unsigned long w/ no change in value
+/* any signed LONG64 _literal_ can be converted to an unsigned LONG64 w/ no change in value
  * (we don't support negation expressions in constant initializers) */
-unsigned long ul2 = 9223372036854775798l;
+unsigned LONG64 ul2 = 9223372036854775798l;
 
 // truncate ulong 2**63 + 2**31 + 150
 // to int -2**31 + 150 (which is -2147483498)

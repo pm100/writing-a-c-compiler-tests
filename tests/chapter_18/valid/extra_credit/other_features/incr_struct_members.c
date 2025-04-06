@@ -6,12 +6,12 @@ struct inner {
 };
 
 struct outer {
-    unsigned long l;
+    unsigned LONG64 l;
     struct inner *in_ptr;
     int array[3];
 };
 
-void *calloc(unsigned long nmemb, unsigned long size);
+void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
 
 int main(void) {
     struct outer my_struct = {

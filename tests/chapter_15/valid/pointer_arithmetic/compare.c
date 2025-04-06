@@ -1,29 +1,29 @@
 /* Test comparison of elements of the same array, including multi-dimensional arrays */
 
 // pointer comparisons
-unsigned long gt(unsigned long *a, unsigned long *b) {
+unsigned LONG64 gt(unsigned LONG64 *a, unsigned LONG64 *b) {
     return a > b;
 }
 
 
-unsigned long lt(unsigned long *a, unsigned long *b) {
+unsigned LONG64 lt(unsigned LONG64 *a, unsigned LONG64 *b) {
     return a < b;
 }
 
-unsigned long ge(unsigned long *a, unsigned long *b) {
+unsigned LONG64 ge(unsigned LONG64 *a, unsigned LONG64 *b) {
     return a >= b;
 }
 
-unsigned long le(unsigned long *a, unsigned long *b) {
+unsigned LONG64 le(unsigned LONG64 *a, unsigned LONG64 *b) {
     return a <= b;
 }
 
 // comparing pointers to nested arrays
-unsigned long gt_nested(unsigned long (*a)[5], unsigned long (*b)[5]) {
+unsigned LONG64 gt_nested(unsigned LONG64 (*a)[5], unsigned LONG64 (*b)[5]) {
     return a > b;
 }
 
-unsigned long ge_nested(unsigned long (*a)[5], unsigned long (*b)[5]) {
+unsigned LONG64 ge_nested(unsigned LONG64 (*a)[5], unsigned LONG64 (*b)[5]) {
     return a >= b;
 }
 
@@ -34,9 +34,9 @@ int main(void)
 
     // we don't need to initialize this because we're only comparing pointers to array elements,
     // not dereferencing them
-    unsigned long arr[5];
-    unsigned long *elem_1 = arr + 1;
-    unsigned long *elem_4 = arr + 4;
+    unsigned LONG64 arr[5];
+    unsigned LONG64 *elem_1 = arr + 1;
+    unsigned LONG64 *elem_4 = arr + 4;
     if (gt(elem_1, elem_4)) {
         return 1;
     }
@@ -51,7 +51,7 @@ int main(void)
     }
 
     // can also compare to pointer to one past the end of the array
-    unsigned long *one_past_the_end = arr + 5;
+    unsigned LONG64 *one_past_the_end = arr + 5;
     if (!(gt(one_past_the_end, elem_4))) {
         return 5;
     }
@@ -60,10 +60,10 @@ int main(void)
     }
 
     // do the same for nested array elements. start w/ pointers to scalar elements within array
-    unsigned long nested_arr[4][5];
+    unsigned LONG64 nested_arr[4][5];
 
-    unsigned long *elem_3_2 = *(nested_arr + 3) + 2;
-    unsigned long *elem_3_3 = *(nested_arr + 3) + 3;
+    unsigned LONG64 *elem_3_2 = *(nested_arr + 3) + 2;
+    unsigned LONG64 *elem_3_3 = *(nested_arr + 3) + 3;
 
     if (lt(elem_3_3, elem_3_2)) {
         return 7;
@@ -74,9 +74,9 @@ int main(void)
     }
 
     // now look at pointers to whole sub-arrays
-    unsigned long (*subarray_0)[5] = nested_arr;
-    unsigned long (*subarray_3)[5] = nested_arr + 3;
-    unsigned long (*subarray_one_past_the_end)[5] = nested_arr + 4;
+    unsigned LONG64 (*subarray_0)[5] = nested_arr;
+    unsigned LONG64 (*subarray_3)[5] = nested_arr + 3;
+    unsigned LONG64 (*subarray_one_past_the_end)[5] = nested_arr + 4;
 
     if (ge_nested(subarray_0, subarray_3)){
         return 9;

@@ -4,7 +4,7 @@
 
 union u {
     int a;
-    long b;
+    LONG64 b;
 };
 
 union u x = {1, 2};  // invalid - multiple initializers

@@ -4,16 +4,16 @@
  * */
 #include "struct_sizes.h"
 
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 // test 1: validate struct w/ scalar members (includes trailing padding)
 // test member accesses of the form &x.y
 int test_eightbytes(void) {
     struct eight_bytes s;
-    unsigned long start_addr = (unsigned long)&s;
-    unsigned long i_addr = (unsigned long)&s.i;
-    unsigned long c_addr = (unsigned long)&s.c;
-    unsigned long end_addr = (unsigned long)(&s + 1);
+    unsigned LONG64 start_addr = (unsigned LONG64)&s;
+    unsigned LONG64 i_addr = (unsigned LONG64)&s.i;
+    unsigned LONG64 c_addr = (unsigned LONG64)&s.c;
+    unsigned LONG64 end_addr = (unsigned LONG64)(&s + 1);
 
     // this struct should be four byte-aligned
     if (start_addr % 4 != 0) {
@@ -42,10 +42,10 @@ int test_eightbytes(void) {
 // pointer) test member accesses of the form &x->y
 int test_internal_padding(void) {
     struct internal_padding *s_ptr = malloc(sizeof(struct internal_padding));
-    unsigned long start_addr = (unsigned long)s_ptr;
-    unsigned long c_addr = (unsigned long)&s_ptr->c;
-    unsigned long d_addr = (unsigned long)&s_ptr->d;
-    unsigned long end_ptr = (unsigned long)(s_ptr + 1);
+    unsigned LONG64 start_addr = (unsigned LONG64)s_ptr;
+    unsigned LONG64 c_addr = (unsigned LONG64)&s_ptr->c;
+    unsigned LONG64 d_addr = (unsigned LONG64)&s_ptr->d;
+    unsigned LONG64 end_ptr = (unsigned LONG64)(s_ptr + 1);
 
     // this struct should be eight byte-aligned
     if (start_addr % 8 != 0) {
@@ -77,15 +77,15 @@ int test_three_bytes(void) {
     // calculation
     static struct three_bytes s;
 
-    unsigned long start_addr = (unsigned long)&s;
-    unsigned long arr_addr = (unsigned long)&s.arr;
-    unsigned long arr0_addr = (unsigned long)&s.arr[0];
-    unsigned long arr1_addr = (unsigned long)&s.arr[1];
+    unsigned LONG64 start_addr = (unsigned LONG64)&s;
+    unsigned LONG64 arr_addr = (unsigned LONG64)&s.arr;
+    unsigned LONG64 arr0_addr = (unsigned LONG64)&s.arr[0];
+    unsigned LONG64 arr1_addr = (unsigned LONG64)&s.arr[1];
     // different way to calculate same address as above
-    unsigned long arr1_addr_alt = (unsigned long)(s.arr + 1);
-    unsigned long arr2_addr = (unsigned long)&s.arr[2];
-    unsigned long arr_end = (unsigned long)(&s.arr + 1);
-    unsigned long struct_end = (unsigned long)(&s + 1);
+    unsigned LONG64 arr1_addr_alt = (unsigned LONG64)(s.arr + 1);
+    unsigned LONG64 arr2_addr = (unsigned LONG64)&s.arr[2];
+    unsigned LONG64 arr_end = (unsigned LONG64)(&s.arr + 1);
+    unsigned LONG64 struct_end = (unsigned LONG64)(&s + 1);
 
     // struct, array, and first array element should all have same address
     if (start_addr != arr_addr) {
@@ -129,21 +129,21 @@ int test_sixteen_bytes(void) {
     struct sixteen_bytes *s_ptr = &s;
 
     // get addresses of various members through s_ptr
-    unsigned long start_addr = (unsigned long)s_ptr;
-    unsigned long eight_addr = (unsigned long)&s_ptr->eight;
-    unsigned long eight_i_addr = (unsigned long)&s_ptr->eight.i;
-    unsigned long eight_c_addr = (unsigned long)&s_ptr->eight.c;
-    unsigned long two = (unsigned long)&s_ptr->two;
-    unsigned long two_arr = (unsigned long)s_ptr->two.arr;
-    unsigned long two_arr0 = (unsigned long)&s_ptr->two.arr[0];
-    unsigned long two_arr1 = (unsigned long)&s_ptr->two.arr[1];
-    unsigned long two_arr_end = (unsigned long)(&s_ptr->two.arr + 1);
-    unsigned long two_end = (unsigned long)(&s_ptr->two + 1);
-    unsigned long three = (unsigned long)&s_ptr->three;
+    unsigned LONG64 start_addr = (unsigned LONG64)s_ptr;
+    unsigned LONG64 eight_addr = (unsigned LONG64)&s_ptr->eight;
+    unsigned LONG64 eight_i_addr = (unsigned LONG64)&s_ptr->eight.i;
+    unsigned LONG64 eight_c_addr = (unsigned LONG64)&s_ptr->eight.c;
+    unsigned LONG64 two = (unsigned LONG64)&s_ptr->two;
+    unsigned LONG64 two_arr = (unsigned LONG64)s_ptr->two.arr;
+    unsigned LONG64 two_arr0 = (unsigned LONG64)&s_ptr->two.arr[0];
+    unsigned LONG64 two_arr1 = (unsigned LONG64)&s_ptr->two.arr[1];
+    unsigned LONG64 two_arr_end = (unsigned LONG64)(&s_ptr->two.arr + 1);
+    unsigned LONG64 two_end = (unsigned LONG64)(&s_ptr->two + 1);
+    unsigned LONG64 three = (unsigned LONG64)&s_ptr->three;
     // not going to validate every individual element in three.arr
     // since we already did that for two.arr
-    unsigned long three_end = (unsigned long)(&s_ptr->three + 1);
-    unsigned long struct_end = (unsigned long)(s_ptr + 1);
+    unsigned LONG64 three_end = (unsigned LONG64)(&s_ptr->three + 1);
+    unsigned LONG64 struct_end = (unsigned LONG64)(s_ptr + 1);
 
     // struct is 4-byte aligned
     if (start_addr % 4 != 0) {
@@ -205,11 +205,11 @@ int test_sixteen_bytes(void) {
     // now get addresses of a few members thru s directly and make sure they're
     // the same
 
-    unsigned long eight_i_addr_alt = (unsigned long)&s.eight.i;
-    unsigned long eight_c_addr_alt = (unsigned long)&s.eight.c;
-    unsigned long two_arr_alt = (unsigned long)s.two.arr;
-    unsigned long two_arr1_alt = (unsigned long)&s.two.arr[1];
-    unsigned long three_alt = (unsigned long)&s.three;
+    unsigned LONG64 eight_i_addr_alt = (unsigned LONG64)&s.eight.i;
+    unsigned LONG64 eight_c_addr_alt = (unsigned LONG64)&s.eight.c;
+    unsigned LONG64 two_arr_alt = (unsigned LONG64)s.two.arr;
+    unsigned LONG64 two_arr1_alt = (unsigned LONG64)&s.two.arr[1];
+    unsigned LONG64 three_alt = (unsigned LONG64)&s.three;
 
     if (eight_i_addr_alt != eight_i_addr) {
         return 0;
@@ -238,13 +238,13 @@ int test_sixteen_bytes(void) {
 // padding b/t array elements test access of the form x[i].y, &x[i].y[j]
 int test_wonky_array(void) {
     struct wonky wonky_array[5];
-    unsigned long array_start = (unsigned long)wonky_array;
-    unsigned long elem3 = (unsigned long)(wonky_array + 3);
-    unsigned long elem3_arr = (unsigned long)wonky_array[3].arr;
-    unsigned long elem2_arr2 = (unsigned long)&wonky_array[2].arr[2];
-    unsigned long elem2_arr_end = (unsigned long)(wonky_array[2].arr + 19);
-    unsigned long elem4_arr_end = (unsigned long)(wonky_array[4].arr + 19);
-    unsigned long array_end = (unsigned long)(wonky_array + 5);
+    unsigned LONG64 array_start = (unsigned LONG64)wonky_array;
+    unsigned LONG64 elem3 = (unsigned LONG64)(wonky_array + 3);
+    unsigned LONG64 elem3_arr = (unsigned LONG64)wonky_array[3].arr;
+    unsigned LONG64 elem2_arr2 = (unsigned LONG64)&wonky_array[2].arr[2];
+    unsigned LONG64 elem2_arr_end = (unsigned LONG64)(wonky_array[2].arr + 19);
+    unsigned LONG64 elem4_arr_end = (unsigned LONG64)(wonky_array[4].arr + 19);
+    unsigned LONG64 array_end = (unsigned LONG64)(wonky_array + 5);
 
     if (elem3 - array_start != 19 * 3) {
         return 0;
@@ -276,32 +276,32 @@ int test_wonky_array(void) {
 // decay to pointers
 int test_contains_struct_array_array(void) {
     struct contains_struct_array arr[3];
-    unsigned long array_start = (unsigned long)arr;
-    unsigned long first_scalar_elem = (unsigned long)(&arr[0].c);
+    unsigned LONG64 array_start = (unsigned LONG64)arr;
+    unsigned LONG64 first_scalar_elem = (unsigned LONG64)(&arr[0].c);
 
     // arr[0].struct_array[0].i
-    unsigned long outer0_inner0_i = (unsigned long)(&arr[0].struct_array->i);
+    unsigned LONG64 outer0_inner0_i = (unsigned LONG64)(&arr[0].struct_array->i);
 
     // arr[0].struct_array[0].i
-    unsigned long outer0_inner0_c = (unsigned long)(&arr->struct_array->c);
+    unsigned LONG64 outer0_inner0_c = (unsigned LONG64)(&arr->struct_array->c);
 
     // one-past-the-end of arr[0].struct_array
-    unsigned long outer0_end = (unsigned long)(arr->struct_array + 3);
+    unsigned LONG64 outer0_end = (unsigned LONG64)(arr->struct_array + 3);
 
     // start of arr[1] (should be the same as one-past-end of
     // arr[0].struct_array)
-    unsigned long outer1 = (unsigned long)(&arr[1]);
+    unsigned LONG64 outer1 = (unsigned LONG64)(&arr[1]);
 
     // second element of arr[1]
-    unsigned long outer1_arr = (unsigned long)(arr[1].struct_array);
+    unsigned LONG64 outer1_arr = (unsigned LONG64)(arr[1].struct_array);
 
     // arr[1].struct_array[1].i
-    unsigned long outer1_inner1_i =
-        (unsigned long)&(((arr + 1)->struct_array + 1)->i);
+    unsigned LONG64 outer1_inner1_i =
+        (unsigned LONG64)&(((arr + 1)->struct_array + 1)->i);
 
     // arr[2].struct_array[0].c
-    unsigned long outer2_inner0_c =
-        (unsigned long)&((arr + 2)->struct_array->c);
+    unsigned LONG64 outer2_inner0_c =
+        (unsigned LONG64)&((arr + 2)->struct_array->c);
 
     // whole thing should be 4-byte aligned
     if (array_start % 4 != 0) {

@@ -40,12 +40,12 @@ int funcall_in_index(void) {
 }
 
 // use result of another subscript expression as index
-int subscript_inception(long *arr, int *a, int b){
+int subscript_inception(LONG64 *arr, int *a, int b){
     return arr[a[b]];
 }
 
 int check_subscript_inception(void) {
-    long arr[4] = {4, 3, 2, 1};
+    LONG64 arr[4] = {4, 3, 2, 1};
     int indices[2] = {1, 2};
     if (subscript_inception(arr, indices, 1) != 2) {
         return 5;

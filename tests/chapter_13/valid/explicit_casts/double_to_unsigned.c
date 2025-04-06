@@ -4,8 +4,8 @@ unsigned int double_to_uint(double d) {
     return (unsigned int) d;
 }
 
-unsigned long double_to_ulong(double d) {
-    return (unsigned long) d;
+unsigned LONG64 double_to_ulong(double d) {
+    return (unsigned LONG64) d;
 }
 
 int main(void) {
@@ -20,7 +20,7 @@ int main(void) {
         return 2;
     }
 
-    // convert a double within the range of signed long,
+    // convert a double within the range of signed LONG64,
     // so cvttsd2siq is already correct
     if (double_to_ulong(34359738368.5) != 34359738368ul) {
         return 3;

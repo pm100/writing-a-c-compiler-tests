@@ -2,7 +2,7 @@
 // initializers
 
 struct one_elem {
-    long l;
+    LONG64 l;
 };
 struct three_elems {
     int one;

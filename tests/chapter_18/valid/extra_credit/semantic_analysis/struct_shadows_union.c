@@ -1,5 +1,5 @@
 // One type declaration can shadow another with the same tag
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 int main(void) {
     struct s {int a; int b;};

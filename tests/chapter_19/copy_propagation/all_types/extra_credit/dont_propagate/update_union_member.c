@@ -1,7 +1,7 @@
 /* Writing to union member kills previous copies to/from that union */
 
 union u {
-    long l;
+    LONG64 l;
     int i;
 };
 

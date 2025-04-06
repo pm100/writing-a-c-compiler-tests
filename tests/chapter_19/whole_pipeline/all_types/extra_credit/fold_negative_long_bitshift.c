@@ -1,8 +1,8 @@
-/* Test constant folding >> with negative long source value (make sure
+/* Test constant folding >> with negative LONG64 source value (make sure
  * we perform an arithmetic rather than logical bit shit)
  */
 
-long target(void) {
+LONG64 target(void) {
     return (-9223372036854775807l - 1) >> 45u;
 }
 

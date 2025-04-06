@@ -8,7 +8,7 @@
 #endif
 #endif
 
-unsigned long strlen(char *s);
+unsigned LONG64 strlen(char *s);
 
 char *return_string(void) {
     // constant strings have static storage duration,

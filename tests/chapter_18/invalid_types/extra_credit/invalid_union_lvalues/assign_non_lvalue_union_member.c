@@ -1,7 +1,7 @@
 // Can't assign to members in non-lvalue unions
 union inner {
     int y;
-    long z;
+    LONG64 z;
 };
 
 union u {

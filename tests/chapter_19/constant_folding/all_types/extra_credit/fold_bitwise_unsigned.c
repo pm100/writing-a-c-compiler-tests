@@ -5,7 +5,7 @@ unsigned target_and(void) {
     return 4042322160u & 4278255360u;
 }
 
-unsigned long target_or(void) {
+unsigned LONG64 target_or(void) {
     // 0x0f0f_0f0f_0f0f_0f0f | 0xff00_ff00_ff00_ff00
     return 1085102592571150095ul | 18374966859414961920ul;
 }
@@ -19,7 +19,7 @@ unsigned int target_shift_uint_left(void) {
     return 10u << 24l; // doesn't matter that right operand is different type
 }
 
-unsigned long target_shift_ulong_left(void) {
+unsigned LONG64 target_shift_ulong_left(void) {
     return 2286249799ul << 33u; // result wrap arounds
 }
 
@@ -28,7 +28,7 @@ unsigned int target_shift_uint_right(void) {
     return 4294967296u >> 16;
 }
 
-unsigned long target_shift_ulong_right(void) {
+unsigned LONG64 target_shift_ulong_right(void) {
     return 9223372041149743104ul >> 21l;
 }
 

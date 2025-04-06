@@ -1,5 +1,5 @@
 /* Test that we can propagate all arithmetic types, including doubles,
- * long and unsigned integers, and characters.
+ * LONG64 and unsigned integers, and characters.
  * */
 
 #ifdef SUPPRESS_WARNINGS
@@ -27,9 +27,9 @@ int target(void) {
     unsigned char uc2 = uc;
     sum = sum + uc + uc2;  // 3498
 
-    // propagate unsigned long
-    unsigned long ul = 18446744073709551615UL;  // ULONG_MAX
-    unsigned long ul2 = ul + 3ul;               // wraps around to 2
+    // propagate unsigned LONG64
+    unsigned LONG64 ul = 18446744073709551615UL;  // ULONG_MAX
+    unsigned LONG64 ul2 = ul + 3ul;               // wraps around to 2
     sum = sum + ul2;                            // 3500
 
     return sum;  // rewrite as "return 3500"

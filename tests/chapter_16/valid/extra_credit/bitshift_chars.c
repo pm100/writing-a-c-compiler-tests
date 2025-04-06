@@ -23,7 +23,7 @@ int main(void) {
         return 3;  // fail
     }
 
-    // make sure c << 3ul is promoted to int, not unsigned long
+    // make sure c << 3ul is promoted to int, not unsigned LONG64
     if (((-(c << 3ul)) >> 3) != -5) {
         return 4;  // fail
     }

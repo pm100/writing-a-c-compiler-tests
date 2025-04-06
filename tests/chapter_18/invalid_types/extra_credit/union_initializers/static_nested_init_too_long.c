@@ -1,7 +1,7 @@
 // Union initializers, including nested ones, must have exactly one element
 union u {
     int a;
-    long b;
+    LONG64 b;
 };
 struct s {
     int tag;

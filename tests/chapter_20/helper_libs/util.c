@@ -74,7 +74,7 @@ int check_one_uint(unsigned int actual, unsigned int expected) {
     return 0;
 }
 
-int check_one_long(long actual, long expected) {
+int check_one_long(LONG64 actual, LONG64 expected) {
     if (actual != expected) {
         printf("Expected %ld but found %ld\n", expected, actual);
         exit(-1);
@@ -82,7 +82,7 @@ int check_one_long(long actual, long expected) {
     return 0;
 }
 
-int check_one_ulong(unsigned long actual, unsigned long expected) {
+int check_one_ulong(unsigned LONG64 actual, unsigned LONG64 expected) {
     if (actual != expected) {
         printf("Expected %lu but found %lu\n", expected, actual);
         exit(-1);
@@ -99,12 +99,12 @@ int check_one_double(double actual, double expected) {
 }
 
 // identical to check_12_ints, but w/ longs
-int check_12_longs(long a, long b, long c, long d, long e, long f, long g,
-                   long h, long i, long j, long k, long l, long start) {
+int check_12_longs(LONG64 a, LONG64 b, LONG64 c, LONG64 d, LONG64 e, LONG64 f, LONG64 g,
+                   LONG64 h, LONG64 i, LONG64 j, LONG64 k, LONG64 l, LONG64 start) {
     // validate that a == start, b == start + 1, ...l == start + 11
-    long args[12] = {a, b, c, d, e, f, g, h, i, j, k, l};
+    LONG64 args[12] = {a, b, c, d, e, f, g, h, i, j, k, l};
     for (int i = 0; i < 12; i++) {
-        long expected = start + i;
+        LONG64 expected = start + i;
         if (args[i] != expected) {
             printf(
                 "Expected argument %d to have value %ld, actual value was "
@@ -159,7 +159,7 @@ int check_14_doubles(double a, double b, double c, double d, double e, double f,
 // *k == start + 10, *l == start + 11,
 // and exits early if they don't have those values
 int check_12_vals(int a, int b, int c, int d, int e, int f, int g, int h, int i,
-                  int j, long* k, double* l, int start) {
+                  int j, LONG64* k, double* l, int start) {
     int args[10] = {a, b, c, d, e, f, g, h, i, j};
     for (int i = 0; i < 10; i++) {
         int expected = start + i;
@@ -198,7 +198,7 @@ double dbl_id(double x) {
     return x;
 }
 
-long long_id(long l) {
+LONG64 long_id(LONG64 l) {
     return l;
 }
 

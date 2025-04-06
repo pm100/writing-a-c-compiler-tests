@@ -1,4 +1,4 @@
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 struct a {
   int x;

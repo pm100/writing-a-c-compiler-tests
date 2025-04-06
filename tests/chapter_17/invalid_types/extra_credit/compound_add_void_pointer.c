@@ -1,6 +1,6 @@
 // Can't perform +=/-= with void * lvalue
 // NOTE: GCC/Clang permit this as a language extension
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 int main(void) {
     void *buff = malloc(100);

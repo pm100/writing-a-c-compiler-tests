@@ -8,9 +8,9 @@ int main(void) {
 
     // First increment, which wraps value of ui around to 0
     // (but note that value of result is ui BEFORE increment)
-    // Then convert to unsigned long, which doesn't change value
+    // Then convert to unsigned LONG64, which doesn't change value
     // If we cast first, it won't wrap around and value won't be 0
-    if (((unsigned long)ui++) != 4294967295U) {
+    if (((unsigned LONG64)ui++) != 4294967295U) {
         return 1; // fail
     }
     if (ui) {

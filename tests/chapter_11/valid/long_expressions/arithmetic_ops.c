@@ -1,8 +1,8 @@
-/* Test basic arithmetic operations on long integers
+/* Test basic arithmetic operations on LONG64 integers
  * when one or both operands and the result are outside the range of int */
 
-long a;
-long b;
+LONG64 a;
+LONG64 b;
 
 int addition(void) {
     // a == 4294967290l, i.e. 2^32 - 6

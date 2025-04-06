@@ -6,7 +6,7 @@ struct has_char_array {
 };
 
 union has_array {
-    long l;
+    LONG64 l;
     struct has_char_array s;
 };
 

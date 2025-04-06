@@ -25,7 +25,7 @@ int main(void) {
     // pseudos and is tied for fewest uses. NOTE: optimizations must be enabled
     // so we propagate the temporary variable holding the result of this
     // expression instead of copying it into should_spill.
-    long should_spill = (long)glob;
+    LONG64 should_spill = (LONG64)glob;
 
     // create 12 pseudos that all interfere w/ cvttsd2si result and each
     // other; this forces a spill, since only 12 hard registers are available

@@ -10,7 +10,7 @@ struct small {
 struct big {
     double d;
     int x;
-    long l;
+    LONG64 l;
 };
 
 struct small globl = {0};

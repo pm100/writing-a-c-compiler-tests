@@ -46,9 +46,9 @@ int check_uint_arr(unsigned *arr) {
 }
 
 // uninitialized; should be all zeros
-long long_arr[1000];
+LONG64 long_arr[1000];
 
-int check_long_arr(long *arr) {
+int check_long_arr(LONG64 *arr) {
     for (int i = 0; i < 1000; i = i + 1) {
         if (arr[i]) {
             return 8;
@@ -58,11 +58,11 @@ int check_long_arr(long *arr) {
 }
 
 // initialized w/ values of different types
-unsigned long ulong_arr[4] = {
+unsigned LONG64 ulong_arr[4] = {
     100.0, 11, 12345l, 4294967295U
 };
 
-int check_ulong_arr(unsigned long *arr) {
+int check_ulong_arr(unsigned LONG64 *arr) {
     if (arr[0] != 100ul) {
         return 9;
     }
@@ -115,10 +115,10 @@ int test_local(void) {
     };
 
     // uninitialized
-    static long local_long_arr[1000];
+    static LONG64 local_long_arr[1000];
 
     // initialized w/ values of different types
-    static unsigned long local_ulong_arr[4] = {
+    static unsigned LONG64 local_ulong_arr[4] = {
         100.0, 11, 12345l, 4294967295U
     };
 

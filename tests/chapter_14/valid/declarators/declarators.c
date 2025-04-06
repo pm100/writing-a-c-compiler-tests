@@ -10,16 +10,16 @@ int((return_3))(void)
 }
 
 
-long l = 100; // used below
+LONG64 l = 100; // used below
 /* Multiple equivalent declarations of the function 'two_pointers' */
-long *two_pointers(double val, double *ptr)
+LONG64 *two_pointers(double val, double *ptr)
 {
     *ptr = val;
     return &l;
 }
-long(*two_pointers(double val, double(*d)));
-long *(two_pointers)(double val, double *(d));
-long *(two_pointers)(double val, double(*(d)));
+LONG64(*two_pointers(double val, double(*d)));
+LONG64 *(two_pointers)(double val, double *(d));
+LONG64 *(two_pointers)(double val, double(*(d)));
 
 /* Multiple equivalent declarations of the function 'pointers_to_pointers' */
 unsigned **pointers_to_pointers(int **p)
@@ -46,7 +46,7 @@ int main(void)
 
     double *(d_ptr) = &d1;
 
-    long(*(l_ptr));
+    LONG64(*(l_ptr));
 
     unsigned *(*(ptr_to_uptr));
 

@@ -1,8 +1,8 @@
 // Test using -> to copy entire structures,
 // including large structures w/ members of different sizes
 
-void *calloc(unsigned long nmemb, unsigned long size);
-void *malloc(unsigned long size);
+void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
+void *malloc(unsigned LONG64 size);
 
 struct inner {
     double d;

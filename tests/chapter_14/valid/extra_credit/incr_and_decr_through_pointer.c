@@ -39,8 +39,8 @@ int main(void) {
     }
 
     // different types
-    unsigned long ul = 0;
-    unsigned long *ul_ptr = &ul;
+    unsigned LONG64 ul = 0;
+    unsigned LONG64 *ul_ptr = &ul;
     if ((*ul_ptr)--) {
         return 9;
     }

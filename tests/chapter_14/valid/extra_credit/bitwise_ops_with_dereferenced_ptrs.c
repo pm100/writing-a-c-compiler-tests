@@ -8,9 +8,9 @@
 // but through dereferenced pointers
 int main(void) {
     unsigned int ui = -1u; // lower 32 bits set
-    unsigned long ul = 9223372036854775808ul; // 2^63, only uppermost bit set
+    unsigned LONG64 ul = 9223372036854775808ul; // 2^63, only uppermost bit set
     unsigned int *ui_ptr = &ui;
-    unsigned long *ul_ptr = &ul;
+    unsigned LONG64 *ul_ptr = &ul;
 
     if ((*ui_ptr & *ul_ptr) != 0) {
         return 1;

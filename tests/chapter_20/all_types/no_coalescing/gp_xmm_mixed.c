@@ -8,14 +8,14 @@
 int target(int one, int two, double one_d, double two_d, int three,
            double three_d) {
     // Define ints 4-8 (all callee-saved) and doubles 10-23 and validate them
-    long four = two * two;
-    long five = three + two_d;
+    LONG64 four = two * two;
+    LONG64 five = three + two_d;
 
     double ten_d = three * two_d + four;
     double eleven_d = ten_d + one;
 
-    long six = three * two_d;
-    long seven = four + 3;
+    LONG64 six = three * two_d;
+    LONG64 seven = four + 3;
 
     double twelve_d = six * two_d;
     double thirteen_d = 14.0 - one_d;
@@ -25,7 +25,7 @@ int target(int one, int two, double one_d, double two_d, int three,
     double seventeen_d = ten_d + seven;
     double eighteen_d = three_d * six;
 
-    unsigned long eight = four * two;
+    unsigned LONG64 eight = four * two;
 
     double nineteen_d = 20 - one;
     double twenty_d = four * five;

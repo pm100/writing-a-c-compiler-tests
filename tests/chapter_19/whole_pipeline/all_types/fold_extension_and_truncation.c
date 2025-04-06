@@ -13,27 +13,27 @@
 
 /* Sign extension */
 
-// Test sign-extension from int to long
+// Test sign-extension from int to LONG64
 // Make sure we propagate converted value, rather than
 // original value, into later expression
-long target_extend_int_to_long(void) {
+LONG64 target_extend_int_to_long(void) {
     int i = -1000;
-    long l = (long)i;
+    LONG64 l = (LONG64)i;
     return (l - 72057594037927936l) / 3l;  // result is outside the range of int
 }
 
 // Test sign-extension from int to ulong
 // same idea as above
-unsigned long target_extend_int_to_ulong(void) {
+unsigned LONG64 target_extend_int_to_ulong(void) {
     int i = -1000;
-    unsigned long u = (unsigned long)i;
+    unsigned LONG64 u = (unsigned LONG64)i;
     return u % 50ul;
 }
 
 /* Zero extension */
-long target_extend_uint_to_long(void) {
+LONG64 target_extend_uint_to_long(void) {
     unsigned int u = 2147483648u;  // 2^31
-    long l = (long)u;
+    LONG64 l = (LONG64)u;
     // make sure it's positive
     if (l < 0) {
         return 0;  // fail
@@ -41,22 +41,22 @@ long target_extend_uint_to_long(void) {
     return l % 7l;
 }
 
-unsigned long target_extend_uint_to_ulong(void) {
+unsigned LONG64 target_extend_uint_to_ulong(void) {
     unsigned int u = 4294967295U;
-    unsigned long l = (unsigned long)u;
+    unsigned LONG64 l = (unsigned LONG64)u;
     return (l == 4294967295Ul);
 }
 
 /* Truncation */
 
-// Test truncation from long to int
+// Test truncation from LONG64 to int
 // make sure we're actually performing truncation (as opposed to,
 // say, just storing ints as 64-bit values internally, then making truncation a
 // no-op or zeroing out upper bytes regardless of sign)
 int target_truncate_long_to_int(void) {
-    long l = 9223372036854775807l;         // LONG_MAX
+    LONG64 l = 9223372036854775807l;         // LONG_MAX
     int i = (int)l;                        // -1
-    long l2 = -9223372036854775807l - 1l;  // LONG_MIN
+    LONG64 l2 = -9223372036854775807l - 1l;  // LONG_MIN
     int i2 = (int)l2;                      // 0
     // make sure we propagate truncated value (0) and not original value
     // (nonzero)
@@ -69,10 +69,10 @@ int target_truncate_long_to_int(void) {
     return 20 / i;
 }
 
-// Test truncation from long to int
+// Test truncation from LONG64 to int
 // same idea as above
 unsigned int target_truncate_long_to_uint(void) {
-    long l = -9223372032559808513l;  // LONG_MIN + UINT_MAX
+    LONG64 l = -9223372032559808513l;  // LONG_MIN + UINT_MAX
     unsigned int u = (unsigned)l;    // UINT_MAX
     if (u - 4294967295U) {           // eliminate this
         return 0;
@@ -80,11 +80,11 @@ unsigned int target_truncate_long_to_uint(void) {
     return u / 20;
 }
 
-// Test truncation from unsigned long to int
+// Test truncation from unsigned LONG64 to int
 int target_truncate_ulong_to_int(void) {
-    unsigned long ul = 18446744073709551615UL;  //  ULONG_MAX
+    unsigned LONG64 ul = 18446744073709551615UL;  //  ULONG_MAX
     int i = (int)ul;                            // -1
-    unsigned long ul2 = 9223372039002259456ul;  // 2^63 + 2^31
+    unsigned LONG64 ul2 = 9223372039002259456ul;  // 2^63 + 2^31
     int i2 = (int)ul2;                          // INT_MIN
     if (i2 >= 0) {                              // eliminate this
         return 0;
@@ -92,9 +92,9 @@ int target_truncate_ulong_to_int(void) {
     return 10 / i;  // -10
 }
 
-// Test truncation from unsigned long to unsigned int
+// Test truncation from unsigned LONG64 to unsigned int
 unsigned int target_truncate_ulong_to_uint(void) {
-    unsigned long ul = 18446744073709551615UL;  // ULONG_MAX
+    unsigned LONG64 ul = 18446744073709551615UL;  // ULONG_MAX
     unsigned int u = (unsigned int)ul;          // UINT_MAX
     return u / 20;
 }
@@ -201,13 +201,13 @@ int target_uchar_uint_conversion(void) {
 }
 
 int target_char_long_conversion(void) {
-    long l = 3377699720528001l;  // 2^51 + 2^50 + 129
+    LONG64 l = 3377699720528001l;  // 2^51 + 2^50 + 129
     char c = l;                  // truncates to -127
     l = 9223372036854775807l;    // LONG_MAX
     char c2 = l;                 // -1
     l = 2147483648l + 127l;      // 2^32 + 127
     signed char c3 = l;          // 127
-    l = -2147483647l - 1l;       // INT_MIN (as a long)
+    l = -2147483647l - 1l;       // INT_MIN (as a LONG64)
     char c4 = l;                 // 0
     l = 2147483648l + 128l;
     signed char c5 = l;  // -128
@@ -233,7 +233,7 @@ int target_char_long_conversion(void) {
 }
 
 int target_uchar_long_conversion(void) {
-    long l = 255l + 4294967296l;
+    LONG64 l = 255l + 4294967296l;
     unsigned char uc1 = l;            // 255
     l = 36028798092705792l;           // 2^55 + 2^30
     unsigned char uc2 = l;            // 0
@@ -262,11 +262,11 @@ int target_uchar_long_conversion(void) {
 int target_char_ulong_conversion(void) {
     char c = 9223373136366403583ul;          // 2^63 + 2^40 - 1, truncates to -1
     signed char c2 = 9223372036854775935ul;  // 2^63 + 127, truncates to 127
-    unsigned long ul = (unsigned long)c;     // ULONG_MAX
+    unsigned LONG64 ul = (unsigned LONG64)c;     // ULONG_MAX
     if (ul != 18446744073709551615UL) {
         return 1;  // fail
     }
-    ul = (unsigned long)c2;
+    ul = (unsigned LONG64)c2;
     if (ul != 127ul) {
         return 2;  // fail
     }

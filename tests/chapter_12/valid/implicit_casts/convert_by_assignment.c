@@ -17,28 +17,28 @@ int check_int(int converted, int expected) {
     return (converted == expected);
 }
 
-int check_long(long converted, long expected) {
+int check_long(LONG64 converted, LONG64 expected) {
     return (converted == expected);
 }
 
-int check_ulong(unsigned long converted, unsigned long expected) {
+int check_ulong(unsigned LONG64 converted, unsigned LONG64 expected) {
     return (converted == expected);
 }
 
-long return_extended_uint(unsigned int u) {
+LONG64 return_extended_uint(unsigned int u) {
     return u;
 }
 
-unsigned long return_extended_int(int i) {
+unsigned LONG64 return_extended_int(int i) {
     return i;
 }
 
-int return_truncated_ulong(unsigned long ul) {
+int return_truncated_ulong(unsigned LONG64 ul) {
     return ul;
 }
 
-int extend_on_assignment(unsigned int ui, long expected) {
-    long result = ui; // implicit conversion causes zero-extension
+int extend_on_assignment(unsigned int ui, LONG64 expected) {
+    LONG64 result = ui; // implicit conversion causes zero-extension
     return result == expected;
 }
 
@@ -75,7 +75,7 @@ int main(void) {
     /* truncate 2^50 + 2^31 + 100 to int, -2^31 + 100
      * then sign-extend, preserving its value
      */
-    long l = return_truncated_ulong(1125902054326372ul);
+    LONG64 l = return_truncated_ulong(1125902054326372ul);
     if (l != -2147483548l) {
         return 6;
     }

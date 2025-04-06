@@ -8,7 +8,7 @@
 /* Make x a global variable so this test doesn't rely on
  * correct argument passing for longs but won't get optimized away in part III
  */
-long x = 5l;
+LONG64 x = 5l;
 
 int add_large(void) {
     // x = 5l

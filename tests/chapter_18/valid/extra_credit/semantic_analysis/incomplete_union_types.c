@@ -10,7 +10,7 @@
 #endif
 #endif
 
-void *calloc(unsigned long nmemb, unsigned long size);
+void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
 int puts(char *s);
 
  // Test 1: you can declare a function that accepts/returns incomplete
@@ -25,7 +25,7 @@ int test_block_scope_forward_decl(void) {
     union u* u_ptr = 0;  // define a pointer to that union type
 
     union u {
-        long x;
+        LONG64 x;
         char y;
     };  // complete the type
 

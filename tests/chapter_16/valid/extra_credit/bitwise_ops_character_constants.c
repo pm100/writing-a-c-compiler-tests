@@ -18,7 +18,7 @@ int main(void) {
         return 2;  // fail
     }
 
-    static unsigned long ul = 9259400834947493926ul;
+    static unsigned LONG64 ul = 9259400834947493926ul;
     if ((ul & '~') != 38) {
         return 3;  // fail
     }

@@ -38,12 +38,12 @@ unsigned int char_to_uint(char c) {
     return (unsigned int)c;
 }
 
-long char_to_long(char c) {
-    return (long)c;
+LONG64 char_to_long(char c) {
+    return (LONG64)c;
 }
 
-unsigned long char_to_ulong(char c) {
-    return (unsigned long)c;
+unsigned LONG64 char_to_ulong(char c) {
+    return (unsigned LONG64)c;
 }
 
 double char_to_double(char c) {
@@ -59,12 +59,12 @@ unsigned int schar_to_uint(signed char s) {
     return (unsigned int)s;
 }
 
-long schar_to_long(signed char s) {
-    return (long)s;
+LONG64 schar_to_long(signed char s) {
+    return (LONG64)s;
 }
 
-unsigned long schar_to_ulong(signed char s) {
-    return (unsigned long)s;
+unsigned LONG64 schar_to_ulong(signed char s) {
+    return (unsigned LONG64)s;
 }
 
 double schar_to_double(signed char s) {
@@ -80,12 +80,12 @@ unsigned int uchar_to_uint(unsigned char u) {
     return (unsigned int)u;
 }
 
-long uchar_to_long(unsigned char u) {
-    return (long)u;
+LONG64 uchar_to_long(unsigned char u) {
+    return (LONG64)u;
 }
 
-unsigned long uchar_to_ulong(unsigned char u) {
-    return (unsigned long)u;
+unsigned LONG64 uchar_to_ulong(unsigned char u) {
+    return (unsigned LONG64)u;
 }
 
 double uchar_to_double(unsigned char u) {
@@ -106,11 +106,11 @@ char double_to_char(double d) {
 }
 
 // other types to signed char
-signed char long_to_schar(long l) {
+signed char long_to_schar(LONG64 l) {
     return (signed char)l;
 }
 
-signed char ulong_to_schar(unsigned long l) {
+signed char ulong_to_schar(unsigned LONG64 l) {
     return (signed char)l;
 }
 
@@ -123,11 +123,11 @@ unsigned char uint_to_uchar(unsigned int ui) {
     return (unsigned char)ui;
 }
 
-unsigned char long_to_uchar(long l) {
+unsigned char long_to_uchar(LONG64 l) {
     return (unsigned char)l;
 }
 
-unsigned char ulong_to_uchar(unsigned long ul) {
+unsigned char ulong_to_uchar(unsigned LONG64 ul) {
     return (unsigned char)ul;
 }
 
@@ -245,13 +245,13 @@ int main(void) {
     }
 
     // you can cast a pointer type to a char
-    static long *null_ptr;
+    static LONG64 *null_ptr;
     char zero = (char)null_ptr;
     if (zero) {
         return 25;
     }
 
-    // you can cast a char to a pointer type as long as it isn't misaligned
+    // you can cast a char to a pointer type as LONG64 as it isn't misaligned
     c = 32;
     int *i = (int *)c;
     // conversion should round-trip

@@ -3,7 +3,7 @@ double uint_to_double(unsigned int ui) {
     return (double) ui;
 }
 
-double ulong_to_double(unsigned long ul) {
+double ulong_to_double(unsigned LONG64 ul) {
     return (double) ul;
 }
 
@@ -29,7 +29,7 @@ int main(void) {
         return 4;
     }
 
-    /* To test our rounding-to-odd implementation, use the unsigned long from
+    /* To test our rounding-to-odd implementation, use the unsigned LONG64 from
      * "Converting an Unsigned Integer to a double" in Chapter 13
      * and other values illustrates in Figure 13-7
      */

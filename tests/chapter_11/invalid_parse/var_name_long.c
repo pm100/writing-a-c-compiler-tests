@@ -1,5 +1,5 @@
 int main(void) {
-    /* Because long is a keyword, you can't use it as a variable name */
-    int long = 5;
-    return long;
+    /* Because LONG64 is a keyword, you can't use it as a variable name */
+    int LONG64 = 5;
+    return LONG64;
 }

@@ -5,9 +5,9 @@ int main(void) {
      * Identical to chapter 11 long_and_int_locals but with some unsigned integers
      */
 
-    unsigned long a = 8589934592ul; // this number is outside the range of int
+    unsigned LONG64 a = 8589934592ul; // this number is outside the range of int
     int b = -1;
-    long c = -8589934592l; // also outside the range of int
+    LONG64 c = -8589934592l; // also outside the range of int
     unsigned int d = 10u;
 
     /* Make sure every variable has the right value */

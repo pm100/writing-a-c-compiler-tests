@@ -5,8 +5,8 @@
 unsigned int ui_a;
 unsigned int ui_b;
 
-unsigned long ul_a;
-unsigned long ul_b;
+unsigned LONG64 ul_a;
+unsigned LONG64 ul_b;
 
 int addition(void) {
     // ui_a = 10u;

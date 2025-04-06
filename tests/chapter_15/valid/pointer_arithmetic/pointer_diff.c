@@ -7,7 +7,7 @@ int get_ptr_diff(int *ptr1, int *ptr2) {
 }
 
 /* subtract two pointers into array of longs */
-int get_long_ptr_diff(long *ptr1, long *ptr2) {
+int get_long_ptr_diff(LONG64 *ptr1, LONG64 *ptr2) {
     return (ptr2 - ptr1);
 }
 
@@ -29,7 +29,7 @@ int main(void) {
         return 1;
     }
 
-    long long_arr[8];
+    LONG64 long_arr[8];
 
     if (get_long_ptr_diff(long_arr + 3, long_arr) != -3) {
         return 2;

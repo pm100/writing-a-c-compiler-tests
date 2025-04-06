@@ -1,8 +1,8 @@
-// Test bit shift operations on long integers; the main focus is making sure
+// Test bit shift operations on LONG64 integers; the main focus is making sure
 // we type check them correctly
 int main(void) {
 
-    long l = 137438953472l; // 2^37
+    LONG64 l = 137438953472l; // 2^37
     int shiftcount = 2;
 
     if (l >> shiftcount != 34359738368l /* 2 ^ 35 */) {
@@ -19,16 +19,16 @@ int main(void) {
     }
 
     // try shift count > 32 (shift count between 32 and 64 is undefined when
-    // shifting an int, well-defined when shifting a long)
+    // shifting an int, well-defined when shifting a LONG64)
     if ((40l << 40) !=  43980465111040l) {
         return 4;
     }
 
-    // use long as right shift operand
+    // use LONG64 as right shift operand
     // NOTE: we shouldn't perform usual arithmetic conversions here
     // (result has same type as left operand) but we won't be able to fully
     // validate that until chapter 12
-    long long_shiftcount = 3l;
+    LONG64 long_shiftcount = 3l;
 
     // declare some variables near i; we'll make sure they aren't clobbered by
     // bit shift operations

@@ -1,15 +1,15 @@
 /* It's illegal to return an int *
- * from a function with return type long *
+ * from a function with return type LONG64 *
  * because you can't implicitly convert
  * one pointer type to another
  */
 int i;
 
-long *return_long_pointer(void) {
+LONG64 *return_long_pointer(void) {
     return &i;
 }
 
 int main(void) {
-    long *l = return_long_pointer();
+    LONG64 *l = return_long_pointer();
     return 0;
 }

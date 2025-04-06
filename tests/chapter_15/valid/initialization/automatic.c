@@ -2,7 +2,7 @@
 
 /* Initialize array with three constants */
 int test_simple(void) {
-    unsigned long arr[3] = {18446744073709551615UL, 9223372036854775807UL,
+    unsigned LONG64 arr[3] = {18446744073709551615UL, 9223372036854775807UL,
                             100ul};
 
     return (arr[0] == 18446744073709551615UL &&
@@ -22,14 +22,14 @@ int test_partial(void) {
 
 /* An initializer can include non-constant expressions, including function
  * parameters */
-int test_non_constant(long negative_7billion, int *ptr) {
+int test_non_constant(LONG64 negative_7billion, int *ptr) {
     *ptr = 1;
     extern int three(void);
-    long var = negative_7billion * three();  // -21 billion
-    long arr[5] = {
+    LONG64 var = negative_7billion * three();  // -21 billion
+    LONG64 arr[5] = {
         negative_7billion,
         three() * 7l,                      // 21
-        -(long)*ptr,                       // -1
+        -(LONG64)*ptr,                       // -1
         var + (negative_7billion ? 2 : 3)  // -21 billion  + 2
     };  // fifth element  not initialized, should be 0
 
@@ -42,13 +42,13 @@ int three(void) {
     return 3;
 }
 
-long global_one = 1l;
+LONG64 global_one = 1l;
 /* elements in a compound initializer are converted to the right type as if by
  * assignment */
 int test_type_conversion(int *ptr) {
     *ptr = -100;
 
-    unsigned long arr[4] = {
+    unsigned LONG64 arr[4] = {
         3458764513821589504.0,  // convert double to ulong
         *ptr,  // dereference to get int, then convert to ulong - end up with
                // 2^64 - 100
@@ -67,7 +67,7 @@ int test_type_conversion(int *ptr) {
 int test_preserve_stack(void) {
     int i = -1;
 
-    /* Initialize with expressions of long type - make sure they're truncated
+    /* Initialize with expressions of LONG64 type - make sure they're truncated
      * before being copied into the array.
      * Also use an array of < 16 bytes so it's not 16-byte aligned, so there are
      * eightbytes that include both array elements and other values.
@@ -98,7 +98,7 @@ int main(void) {
         return 2;
     }
 
-    long negative_seven_billion = -7000000000l;
+    LONG64 negative_seven_billion = -7000000000l;
     int i = 0;  // value of i doesn't matter, functions will always overwrite it
     if (!test_non_constant(negative_seven_billion, &i)) {
         return 3;

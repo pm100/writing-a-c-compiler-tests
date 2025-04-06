@@ -1,30 +1,30 @@
-/* Test constant folding with negative numbers (including double and long);
+/* Test constant folding with negative numbers (including double and LONG64);
  * we couldn't test this in the constant-folding stage because it requires
  * copy propagation.
  * */
 
-/* long tests */
+/* LONG64 tests */
 
-/* similar to int-only remainder_test but with long instead of int */
-long target_remainder_test(void) {
+/* similar to int-only remainder_test but with LONG64 instead of int */
+LONG64 target_remainder_test(void) {
     // same expression as in chapter_11/valid/long_expressions/arithmetic_ops.c
     // but constant-foldable
     return -8589934585l % 4294967290l;
 }
 
-long target_long_subtraction(void) {
+LONG64 target_long_subtraction(void) {
     // same expression as in chapter_11/valid/long_expressions/arithmetic_ops.c
     // but constant-foldable
     return -4294967290l - 90l;
 }
 
-long target_long_division(void) {
+LONG64 target_long_division(void) {
     // same expression as in chapter_11/valid/long_expressions/arithmetic_ops.c
     // but constant-foldable and w/ first operand negated
     return (-4294967290l / 128l);
 }
 
-long target_long_complement(void) {
+LONG64 target_long_complement(void) {
     return ~-9223372036854775807l;
 }
 
@@ -54,7 +54,7 @@ double target_double_div(void) {
 }
 
 int main(void) {
-    // long tests
+    // LONG64 tests
     if (target_remainder_test() != -5l) {
         return 1;  // fail
     }

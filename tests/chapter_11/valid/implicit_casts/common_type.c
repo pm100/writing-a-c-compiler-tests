@@ -1,18 +1,18 @@
 /* Test that we correctly find the common type in binary expressions */
 
-long l;
+LONG64 l;
 int i;
 
 int addition(void) {
     // l = 2147483653
     // i = 10
 
-    /* The common type of i and l is long, so we should
-     * promote i to a long, then perform addition.
+    /* The common type of i and l is LONG64, so we should
+     * promote i to a LONG64, then perform addition.
      * If we instead converted l to an int, its value would be
      * -2147483643, and the result of i + l would be -2147483633
      */
-    long result = i + l;
+    LONG64 result = i + l;
     return (result == 2147483663l);
 }
 
@@ -20,8 +20,8 @@ int division(void) {
     // l = 2147483649l
     // i = 10l
 
-    /* The common type of i and l is long.
-     * Therefore, we should promote i to a long,
+    /* The common type of i and l is LONG64.
+     * Therefore, we should promote i to a LONG64,
      * then divide (resulting in 214748364),
      * then convert back to an int (which can be done without
      * changing the result's value, since 214748364 is within
@@ -38,7 +38,7 @@ int comparison(void) {
     // i = -100
     // l = 2147483648, i.e. 2^31
 
-    /* Make sure we convert i to a long instead of converting l to an int.
+    /* Make sure we convert i to a LONG64 instead of converting l to an int.
      * If we convert l to an int its value will be -2147483648,
      * which is smaller than -100.
      */
@@ -49,11 +49,11 @@ int conditional(void) {
     // l = 8589934592l, i.e. 2^33
     // i = 10;
 
-    /* When a conditional expression includes both int and long branches,
-     * make sure the int type is promoted to a long, rather than the long being
+    /* When a conditional expression includes both int and LONG64 branches,
+     * make sure the int type is promoted to a LONG64, rather than the LONG64 being
      * converted to an int
      */
-    long result = 1 ? l : i;
+    LONG64 result = 1 ? l : i;
     return (result == 8589934592l);
 }
 

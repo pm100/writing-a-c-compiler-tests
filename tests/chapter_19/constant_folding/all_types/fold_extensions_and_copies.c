@@ -1,6 +1,6 @@
 /* Test that we can constant-fold zero- and sign-extensions from shorter to
  * longer ints, and conversions from one integer type to another of the same
- * size (e.g. long to unsigned long). We inspect the assembly for sign-extension
+ * size (e.g. LONG64 to unsigned LONG64). We inspect the assembly for sign-extension
  * operations to make sure there are no movsx instructions, but not for
  * zero-extension or conversions between types of the same size because those
  * turn into a single 'mov' instruction whether they're sign extended or not.
@@ -10,21 +10,21 @@
  * them more thoroughly once other optimizations are enabled.
  */
 
-long uint_to_long(void) {
-    return (long)4294967295U;
+LONG64 uint_to_long(void) {
+    return (LONG64)4294967295U;
 }
 
-unsigned long uint_to_ulong(void) {
-    return (unsigned long)4294967295U;
+unsigned LONG64 uint_to_ulong(void) {
+    return (unsigned LONG64)4294967295U;
 }
 
 /* These next two are target_* functions b/c they require sign extension */
-unsigned long target_int_to_ulong(void) {
-    return (unsigned long)2147483647;
+unsigned LONG64 target_int_to_ulong(void) {
+    return (unsigned LONG64)2147483647;
 }
 
-long target_int_to_long(void) {
-    return (long)1;
+LONG64 target_int_to_long(void) {
+    return (LONG64)1;
 }
 
 int uint_to_int(void) {
@@ -36,22 +36,22 @@ unsigned int int_to_uint(void) {
     return (unsigned)2147480000;
 }
 
-long ulong_to_long(void) {
-    // outside the range of long; will be negative
-    return (long)18446744073709551615UL;
+LONG64 ulong_to_long(void) {
+    // outside the range of LONG64; will be negative
+    return (LONG64)18446744073709551615UL;
 }
 
-unsigned long long_to_ulong(void) {
+unsigned LONG64 long_to_ulong(void) {
     return 2147483650l;
 }
 
-long implicit(void) {
+LONG64 implicit(void) {
     // same as ulong_to_long, but cast is implicit
     return 18446744073709551615UL;
 }
 
-long one = 1l;
-long ninety_six = 96l;
+LONG64 one = 1l;
+LONG64 ninety_six = 96l;
 
 int main(void) {
     if (uint_to_long() != 4294967295l) {

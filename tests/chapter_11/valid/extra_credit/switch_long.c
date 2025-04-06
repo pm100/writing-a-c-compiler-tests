@@ -1,8 +1,8 @@
-/* When a long is used in the controlling condition of a switch statement,
- * the constant in each case statement should be converted to a long
+/* When a LONG64 is used in the controlling condition of a switch statement,
+ * the constant in each case statement should be converted to a LONG64
  */
 
-int switch_on_long(long l) {
+int switch_on_long(LONG64 l) {
     switch (l) {
         case 0: return 0;
         case 100: return 1;

@@ -1,6 +1,6 @@
 /* Test that we can return structs of every size between 1 and 24 bytes. */
 #include "retval_struct_sizes.h"
-int memcmp(void *s1, void *s2, unsigned long n);
+int memcmp(void *s1, void *s2, unsigned LONG64 n);
 
 int main(void) {
     struct bytesize1 s1 = fun1();

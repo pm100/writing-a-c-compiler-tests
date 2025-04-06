@@ -6,7 +6,7 @@
 struct four_members {
     double d;
     char c;
-    long l;
+    LONG64 l;
     char *ptr;
 };
 
@@ -17,12 +17,12 @@ double get_double(void) {
     return 2e12;
 }
 
-static long l = 34359738378l;
+static LONG64 l = 34359738378l;
 
 // validate members (and values derived from members) that are passed as
 // parameters
 int accept_params(int d_divided, int c_doubled, double l_cast,
-                  int dereferenced_ptr, double d, int c, long l, char *ptr) {
+                  int dereferenced_ptr, double d, int c, LONG64 l, char *ptr) {
     if (d != 4e12 || c != 127 || l != 8589934594l || *ptr != 100 ||
         d_divided != 100.0 || c_doubled != 254 || l_cast != 8589934594.0 ||
         dereferenced_ptr != 100) {

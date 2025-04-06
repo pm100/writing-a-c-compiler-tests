@@ -1,7 +1,7 @@
 /* Make sure we detect dead stores to union members */
 
 union u {
-    long l;
+    LONG64 l;
     int i;
 };
 

@@ -4,8 +4,8 @@
  * and does nothing if one is already in scope?
  * */
 
-void *calloc(unsigned long nmemb, unsigned long size);
-void *malloc(unsigned long size);
+void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
+void *malloc(unsigned LONG64 size);
 
 // simple struct type used in several tests
 struct s {

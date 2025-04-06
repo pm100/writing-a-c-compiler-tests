@@ -28,9 +28,9 @@ int check_double_arr(double (*arr)[2]) {
 }
 
 // uninitialized; should be all zeros
-long long_arr[30][50][40];
+LONG64 long_arr[30][50][40];
 
-int check_long_arr(long (*arr)[50][40]) {
+int check_long_arr(LONG64 (*arr)[50][40]) {
     for (int i = 0; i < 30; i = i + 1) {
         for (int j = 0; j < 50; j = j + 1) {
             for (int k = 0; k < 40; k = k + 1) {
@@ -46,14 +46,14 @@ int check_long_arr(long (*arr)[50][40]) {
 
 // partially initialized using values of different types
 
-unsigned long ulong_arr[4][6][2] = {
+unsigned LONG64 ulong_arr[4][6][2] = {
     {{
          1000.3,
      }, // truncated to 1000
      {12u}},
     {{2}}};
 
-int check_ulong_arr(unsigned long (*arr)[6][2]) {
+int check_ulong_arr(unsigned LONG64 (*arr)[6][2]) {
     for (int i = 0; i < 4; i = i + 1) {
         for (int j = 0; j < 6; j = j + 1) {
             for (int k = 0; k < 2; k = k + 1) {
@@ -111,13 +111,13 @@ int test_local(void) {
         return 100 + check;
     }
 
-    static long local_long_arr[30][50][40];
+    static LONG64 local_long_arr[30][50][40];
     check = check_long_arr(local_long_arr);
     if (check) {
         return 100 + check;
     }
 
-    static unsigned long local_ulong_arr[4][6][2] = {
+    static unsigned LONG64 local_ulong_arr[4][6][2] = {
         {{
             1000.3,
         }, // truncated to 1000

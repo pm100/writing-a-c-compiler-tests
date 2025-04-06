@@ -6,7 +6,7 @@ struct inner {
 };
 
 struct outer {
-    unsigned long l;
+    unsigned LONG64 l;
     struct inner *in_ptr;
     struct inner in_array[4];
     int bar;

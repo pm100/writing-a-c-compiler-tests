@@ -8,12 +8,12 @@ int main(void) {
         return 1;
     }
 
-    unsigned long ul = 18446744073709551586ul;
+    unsigned LONG64 ul = 18446744073709551586ul;
     /* We'll promote ul to the nearest double,
      * which is 18446744073709551616,
      * then subtract 1.5 * 10^19, which
      * results in 3446744073709551616.0,
-     * then convert it back to an unsigned long
+     * then convert it back to an unsigned LONG64
      */
     ul -= 1.5E19;
     if (ul != 3446744073709551616ul) {

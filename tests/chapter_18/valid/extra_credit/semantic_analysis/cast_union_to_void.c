@@ -1,7 +1,7 @@
 // You can cast a union to void
 
 union u {
-    long l;
+    LONG64 l;
     double d;
 };
 

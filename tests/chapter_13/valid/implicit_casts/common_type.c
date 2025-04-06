@@ -8,7 +8,7 @@
 #endif
 #endif
 
-int lt(double d, long l) {
+int lt(double d, LONG64 l) {
     // l is implicitly converted to a double
     return d < l;
 }
@@ -16,9 +16,9 @@ int lt(double d, long l) {
 double tern_double_flag(double flag) {
     /* Ternary expression where controlling condition is a double
      * You do not have to convert second and third operands to double;
-     * instead, we convert them to their common type, which is unsigned long,
+     * instead, we convert them to their common type, which is unsigned LONG64,
      * THEN convert that to a double.
-     * Converting -30 to unsigned long gives us 2^64 - 30, or 18446744073709551586.
+     * Converting -30 to unsigned LONG64 gives us 2^64 - 30, or 18446744073709551586.
      * The nearest double to this result is 18446744073709551616.0
      */
     return (double) (flag ? -30 : 10ul);
@@ -47,7 +47,7 @@ int multiply(void) {
 int main(void) {
 
     /* Comparison:
-     * we'll implicitly convert the long argument the nearest double,
+     * we'll implicitly convert the LONG64 argument the nearest double,
      * which is -9007199254751228.0, so these values compare equal
      */
     if (lt(-9007199254751228.0, -9007199254751227l)) {

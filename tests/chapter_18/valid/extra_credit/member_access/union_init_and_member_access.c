@@ -3,8 +3,8 @@
 // declare a union type
 union u {
     double d;
-    long l;
-    unsigned long ul;
+    LONG64 l;
+    unsigned LONG64 ul;
     char c;
 };
 

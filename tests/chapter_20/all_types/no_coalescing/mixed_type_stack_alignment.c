@@ -15,13 +15,13 @@ int check_alignment(int exit_code);
 
 // 5 callee-saved registers, 16 bytes (2 longs) on stack
 int test1(void) {
-    long a = id(1);
-    unsigned long b = id(2);
-    long c = id(3);
-    unsigned long d = id(4);
-    long e = id(5);
-    unsigned long f = id(6);
-    long g = id(7);
+    LONG64 a = id(1);
+    unsigned LONG64 b = id(2);
+    LONG64 c = id(3);
+    unsigned LONG64 d = id(4);
+    LONG64 e = id(5);
+    unsigned LONG64 f = id(6);
+    LONG64 g = id(7);
     check_alignment(-1);
     check_one_int(a, 1);
     check_one_int(b, 2);
@@ -52,7 +52,7 @@ int test3(void) {
     static int *ptr;
     char a = id(4);
     unsigned char b = id(5);
-    long c = id(6);
+    LONG64 c = id(6);
     int aliased = 10;
     ptr = &aliased;
     check_alignment(-3);

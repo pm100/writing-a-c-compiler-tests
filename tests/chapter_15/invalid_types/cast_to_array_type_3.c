@@ -1,6 +1,6 @@
 int main(void)
 {
-    long arr[6];
+    LONG64 arr[6];
     // casts to array type are illegal
-    return ((long(([2])[3]))arr);
+    return ((LONG64(([2])[3]))arr);
 }

@@ -8,7 +8,7 @@ int test_shared_member_names(void) {
         int a;
     };
     union u2 {
-        long l;
+        LONG64 l;
         double a;
     };
     struct s {

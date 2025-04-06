@@ -11,7 +11,7 @@ int main(void) {
      * which potentially clobbered other things on the stack (e.g. at -8(%rbp))
      * we include other variables on the stack in order to catch this
      */
-    long l = -1l;
+    LONG64 l = -1l;
     int i = -1;
     int j = (int) glob;
     int k = 20;

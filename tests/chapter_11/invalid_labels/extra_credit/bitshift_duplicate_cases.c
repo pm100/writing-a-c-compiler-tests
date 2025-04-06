@@ -5,7 +5,7 @@ int main(void) {
     int x = 100;
     switch (x << 2l) {  // x << 2 == 400
         // these cases are duplicates b/c they'll both be converted to
-        // the type of the switch expression - which is int, NOT long
+        // the type of the switch expression - which is int, NOT LONG64
         case 34359738768l:  // 2**35 + 400
             return 1;
         case 400:

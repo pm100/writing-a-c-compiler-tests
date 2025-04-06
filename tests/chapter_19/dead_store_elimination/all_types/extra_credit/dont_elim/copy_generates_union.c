@@ -7,7 +7,7 @@ struct s {
 
 union u {
     struct s str;
-    long l;
+    LONG64 l;
 };
 
 union u glob = {{1, 2}};

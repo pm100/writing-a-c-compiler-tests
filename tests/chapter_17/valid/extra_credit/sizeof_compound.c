@@ -6,11 +6,11 @@
 #endif
 
 int main(void) {
-    long long_arr[2] = {1, 2};
+    LONG64 long_arr[2] = {1, 2};
     static int i = 3;
     static unsigned char uc = 4;
     double d = 5.0;
-    long *ptr = long_arr;
+    LONG64 *ptr = long_arr;
 
     if (sizeof(long_arr[1] *= 10) != 8) {
         return 1;  // fail

@@ -4,7 +4,7 @@
 struct s {
     int a;
     int b;
-    long l;
+    LONG64 l;
 };
 
 // defined in tests/chapter_20/all_types/no_coalescing/return_all_int_struct.c

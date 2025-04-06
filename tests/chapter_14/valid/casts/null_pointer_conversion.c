@@ -11,7 +11,7 @@ int expect_null_param(int *val)
     return (val == 0ul);
 }
 
-long *return_null_ptr(void)
+LONG64 *return_null_ptr(void)
 {
     return 0; // convert return value to pointer
 }
@@ -50,7 +50,7 @@ int main(void)
     }
 
     // return_null_ptr converts a null pointer constant to a pointer
-    long *null_ptr = return_null_ptr();
+    LONG64 *null_ptr = return_null_ptr();
     if (null_ptr != 0) {
         return 7;
     }

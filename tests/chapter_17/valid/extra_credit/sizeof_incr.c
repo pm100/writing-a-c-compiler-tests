@@ -6,7 +6,7 @@
 
 int main(void) {
     int i = 0;
-    long l = 0;
+    LONG64 l = 0;
     static char arr[3] = {0, 0, 0};
     char *ptr = arr;
     if (sizeof (i++) != 4) {

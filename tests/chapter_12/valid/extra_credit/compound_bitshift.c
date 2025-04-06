@@ -9,7 +9,7 @@ int main(void) {
         return 1;
     }
 
-    unsigned long ul = 18446744073709551615UL;  // 2^64 - 1
+    unsigned LONG64 ul = 18446744073709551615UL;  // 2^64 - 1
     ul <<= 44;                                  // 0 out lower 44 bits
     if (ul != 18446726481523507200ul) {
         return 2;  // fail

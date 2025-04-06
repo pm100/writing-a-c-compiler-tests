@@ -1,11 +1,11 @@
-long sign_extend(int i, long expected) {
-    long extended = (long) i;
+LONG64 sign_extend(int i, LONG64 expected) {
+    LONG64 extended = (LONG64) i;
     return (extended == expected);
 }
 
 
 int main(void) {
-    /* Converting a positive or negative int to a long preserves its value */
+    /* Converting a positive or negative int to a LONG64 preserves its value */
     if (!sign_extend(10, 10l)) {
         return 1;
     }
@@ -15,7 +15,7 @@ int main(void) {
     }
 
     /* sign-extend a constant to make sure we've implemented rewrite rule for movsx correctly */
-    long l = (long) 100;
+    LONG64 l = (LONG64) 100;
     if (l != 100l) {
         return 3;
     }

@@ -2,7 +2,7 @@
  * Almost identical to chapter 11 logical.c, but with unsigned ints
  */
 
-int not(unsigned long ul) {
+int not(unsigned LONG64 ul) {
     return !ul;
 }
 
@@ -13,7 +13,7 @@ int if_cond(unsigned u) {
     return 0;
 }
 
-int and(unsigned long ul, int i) {
+int and(unsigned LONG64 ul, int i) {
     return ul && i;
 }
 
@@ -23,9 +23,9 @@ int or(int i, unsigned u) {
 
 int main(void) {
     // this would be equal to zero if we only considered lower 32 bits
-    unsigned long ul = 1152921504606846976ul; // 2^60
+    unsigned LONG64 ul = 1152921504606846976ul; // 2^60
     unsigned int u = 2147483648u; // 2^31
-    unsigned long zero = 0l;
+    unsigned LONG64 zero = 0l;
     if (not(ul)) {
         return 1;
     }

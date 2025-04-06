@@ -1,11 +1,11 @@
-int truncate(long l, int expected) {
+int truncate(LONG64 l, int expected) {
     int result = (int) l;
     return (result == expected);
 }
 
 int main(void)
 {
-    /* If a long is already in the range of 'int',
+    /* If a LONG64 is already in the range of 'int',
      * truncation doesn't change its value.
      */
     if (!truncate(10l, 10)) {
@@ -16,7 +16,7 @@ int main(void)
     if (!truncate(-10l, -10)) {
         return 2;
     }
-    /* If a long is outside the range of int,
+    /* If a LONG64 is outside the range of int,
      * subtract 2^32 until it's in range
      */
     if (!truncate(17179869189l, // 2^34 + 5
@@ -24,7 +24,7 @@ int main(void)
         return 3;
     }
 
-    /* If a negative long is outside the range of int,
+    /* If a negative LONG64 is outside the range of int,
      * add 2^32 until it's in range
      */
     if (!truncate(-17179869179l, // (-2^34) + 5
@@ -32,7 +32,7 @@ int main(void)
         return 4;
     }
 
-    /* truncate long constant that can't
+    /* truncate LONG64 constant that can't
      * be expressed in 32 bits, to test rewrite rule
      */
     int i = (int)17179869189l; // 2^34 + 5

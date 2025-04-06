@@ -1,8 +1,8 @@
 /* Test initializing and updating unsigned global variables */
-static unsigned long x = 9223372036854775803ul; // 2^63 - 5
+static unsigned LONG64 x = 9223372036854775803ul; // 2^63 - 5
 
 // make sure these are initialized to zero
-unsigned long zero_long;
+unsigned LONG64 zero_long;
 unsigned zero_int;
 
 int main(void)

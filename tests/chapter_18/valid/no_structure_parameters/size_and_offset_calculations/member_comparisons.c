@@ -10,7 +10,7 @@ struct three_ints {
     int c;
 };
 
-void* calloc(unsigned long nmem, unsigned long size);
+void* calloc(unsigned LONG64 nmem, unsigned LONG64 size);
 
 int main(void) {
     struct three_ints* my_struct = calloc(1, sizeof(struct three_ints));

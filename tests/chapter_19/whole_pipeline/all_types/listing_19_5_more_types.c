@@ -12,13 +12,13 @@ struct inner {
 
 struct s {
     void *ptr;
-    long arr[5];
+    LONG64 arr[5];
     struct inner x;
     char c[4];
 };
 
-long target(void) {
-    unsigned long x = 4;
+LONG64 target(void) {
+    unsigned LONG64 x = 4;
     char z;
     struct s my_struct = {&z,
                           {

@@ -3,7 +3,7 @@
  * Pass each size both in a register (when possible) and on the stack. */
 
 #include "struct_sizes.h"
-int memcmp(void *s1, void *s2, unsigned long n);
+int memcmp(void *s1, void *s2, unsigned LONG64 n);
 
 // Pass sizes 1 - 6 in registers, remainders on the stack
 int fun0(struct bytesize1 a, struct bytesize2 b, struct bytesize3 c,

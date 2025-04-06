@@ -64,12 +64,12 @@ int target_double_cast(void) {
         return 1;
     }
 
-    unsigned long ul = 18446744073709551586ul;
+    unsigned LONG64 ul = 18446744073709551586ul;
     /* We'll promote e to the nearest double,
      * which is 18446744073709551616,
      * then subtract 1.5 * 10^19, which
      * results in 3446744073709551616.0,
-     * then convert it back to an unsigned long
+     * then convert it back to an unsigned LONG64
      */
     ul -= 1.5E19;
     if (ul != 3446744073709551616ul) {
@@ -90,7 +90,7 @@ int target_double_cast(void) {
 // Almost identical to chapter 12's compound_assign_uint
 int target_uint(void) {
     unsigned int x = -1u; // 2^32 - 1
-    /* 1. convert x to a signed long, which preserves its value
+    /* 1. convert x to a signed LONG64, which preserves its value
      * 2. divide by -10, resulting in -429496729
      * 3. convert -429496729 to an unsigned int by adding 2^32
      */
@@ -110,8 +110,8 @@ int target_assign_long_to_int(void) {
     int c = -5000000;
 
     /* This statement is evaluated as follows:
-     * 1. sign-extend i to a long with value -20
-     * 2. add this long to 2147483648, resulting in the long 2147483628,
+     * 1. sign-extend i to a LONG64 with value -20
+     * 2. add this LONG64 to 2147483648, resulting in the LONG64 2147483628,
      * 3. convert this to an int with value 2147483628 (this value
      * can be represented as an int)
      */
@@ -126,7 +126,7 @@ int target_assign_long_to_int(void) {
     }
 
     // b /= -2^35 + 1
-    // if we try to perform int (rather than long)
+    // if we try to perform int (rather than LONG64)
     // division, we'll interpret this value as 1 and
     // b's value won't change.
     b /= -34359738367l;
@@ -155,9 +155,9 @@ int target_assign_long_to_int(void) {
 // Identical to chapter 11's compound_assign_to_long.c, but we inspect the
 // assembly
 int target_assign_to_long(void) {
-    long l = -34359738368l; // -2^35
+    LONG64 l = -34359738368l; // -2^35
     int i = -10;
-    /* We should convert i to a long, then subtract from l */
+    /* We should convert i to a LONG64, then subtract from l */
     l -= i;
     if (l != -34359738358l) {
         return 1;

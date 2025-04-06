@@ -1,6 +1,6 @@
 // Test that we correctly get the size of bitwise and bitshift expression
 int main(void) {
-    static long l = 0;
+    static LONG64 l = 0;
     int i = 0;
     static char c = 0;
 

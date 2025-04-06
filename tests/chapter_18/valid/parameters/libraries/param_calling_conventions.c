@@ -42,7 +42,7 @@ int a_bunch_of_arguments(int i0, int i1, int i2, int i3, int i4,
 }
 
 // use remaining structure types, mix with scalars
-int structs_and_scalars(long l, double d, struct odd_size os, struct memory mem,
+int structs_and_scalars(LONG64 l, double d, struct odd_size os, struct memory mem,
                         struct one_xmm xmm_struct) {
     if (l != 10)
         return 0;
@@ -60,7 +60,7 @@ int structs_and_scalars(long l, double d, struct odd_size os, struct memory mem,
 
 // pass fourth_struct in memory b/c we're out of XMM registers
 int struct_in_mem(double a, double b, double c, struct xmm_and_int first_struct,
-                  double d, struct two_xmm second_struct, long l,
+                  double d, struct two_xmm second_struct, LONG64 l,
                   struct int_and_xmm third_struct,
                   struct one_xmm fourth_struct) {
     if (a != 10.0 || b != 11.125 || c != 12.0)
@@ -106,7 +106,7 @@ int pass_borderline_struct_in_memory(struct two_ints t_i, int c,
 }
 
 // pass a struct in memory that isn't neatly divisible by 8
-int pass_uneven_struct_in_mem(struct twelve_bytes struct1, long a, long b,
+int pass_uneven_struct_in_mem(struct twelve_bytes struct1, LONG64 a, LONG64 b,
                               struct twelve_bytes struct2, struct odd_size os,
                               struct memory m) {
     if (struct1.i != -1) {

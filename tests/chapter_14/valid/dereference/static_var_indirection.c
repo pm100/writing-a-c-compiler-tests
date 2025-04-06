@@ -5,8 +5,8 @@ int x = 10;
 unsigned int y = 4294967295U;
 double *dbl_ptr;
 
-long modify_ptr(long *new_ptr) {
-    static long *p;
+LONG64 modify_ptr(LONG64 *new_ptr) {
+    static LONG64 *p;
     if (new_ptr)
     {
         p = new_ptr;
@@ -50,7 +50,7 @@ int main(void) {
     }
 
     // now try updating a pointer that is itself static
-    long l = 1000l;
+    LONG64 l = 1000l;
 
     // make static pointer in modify_ptr point to l
     if (modify_ptr(&l) != 1000l) {

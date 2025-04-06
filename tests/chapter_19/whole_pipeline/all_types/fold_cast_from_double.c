@@ -11,10 +11,10 @@ int target_to_int(void) {
     return (int)-5.9;
 }
 
-long target_to_long(void) {
+LONG64 target_to_long(void) {
     // nearest representable double is -9223372036854774784.0,
-    // which will be converted to long int -9223372036854774784
-    return (long)-9223372036854774783.1;
+    // which will be converted to LONG64 int -9223372036854774784
+    return (LONG64)-9223372036854774783.1;
 }
 
 int main(void) {

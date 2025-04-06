@@ -2,7 +2,7 @@
 
 #include "../union_types.h"
 
-void* calloc(unsigned long nmemb, unsigned long size);
+void* calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
 
 int test_dot(void) {
     // Test reading/writing whole nested unions/structs w/ . operator

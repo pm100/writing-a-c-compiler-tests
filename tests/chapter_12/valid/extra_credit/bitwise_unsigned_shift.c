@@ -4,7 +4,7 @@ int main(void) {
     unsigned int ui = -1u;  // 2^32 - 1, or 4294967295
 
     /* Shifting left by 2 is like subtracting 3;
-     * note that we don't cast ui to a long first.
+     * note that we don't cast ui to a LONG64 first.
      * Also note that the result wraps around; it's
      * equivalent to (ui * 2^2) % UINT_MAX.
      */

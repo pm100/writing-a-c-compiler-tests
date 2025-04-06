@@ -1,6 +1,6 @@
-long l = 4294967300l;
+LONG64 l = 4294967300l;
 
-long *get_ptr(void) {
+LONG64 *get_ptr(void) {
     return &l;
 }
 int main(void) {

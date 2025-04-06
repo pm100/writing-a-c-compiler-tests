@@ -10,7 +10,7 @@
 
 int strcmp(char *s1, char *s2);
 int puts(char *s);
-unsigned long strlen(char *s);
+unsigned LONG64 strlen(char *s);
 int atoi(char *s);
 
 int main(void) {

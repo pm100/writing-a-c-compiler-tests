@@ -1,7 +1,7 @@
 /* Make sure we accurately calculate the size of derived (pointer and array)
  * types */
 
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 int main(void) {
     // start with a simple array type

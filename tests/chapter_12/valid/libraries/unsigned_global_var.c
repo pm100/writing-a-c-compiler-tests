@@ -8,6 +8,6 @@ int return_uint_as_signed(void) {
     return ui; //implicitly convert to signed int
 }
 
-long return_uint_as_long(void) {
-    return ui; // implicitly convert to signed long
+LONG64 return_uint_as_long(void) {
+    return ui; // implicitly convert to signed LONG64
 }

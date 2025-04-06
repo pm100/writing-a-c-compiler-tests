@@ -2,7 +2,7 @@
 
 int main(void)
 {
-    unsigned long x[300][5];
+    unsigned LONG64 x[300][5];
     for (int i = 0; i < 300; i = i + 1) {
         for (int j = 0; j < 5; j = j + 1) {
             x[i][j] = i * 5 + j;

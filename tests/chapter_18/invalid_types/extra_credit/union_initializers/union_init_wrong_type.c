@@ -3,12 +3,12 @@
  */
 
 union u {
-    long *ptr;
+    LONG64 *ptr;
     double d;
 };
 
 int main(void) {
     // invalid; cannot implicitly convert double 1.0 to type of first
-    // member (long *)
+    // member (LONG64 *)
     union u my_union = {1.0};
 }

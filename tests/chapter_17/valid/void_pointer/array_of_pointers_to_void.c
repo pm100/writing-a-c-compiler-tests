@@ -1,7 +1,7 @@
 /* Test using complex types derived from void
  * arrays of void are illegal, but arrays of pointer to void are allowed */
 
-void *calloc(unsigned long nmemb, unsigned long size);
+void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
 void free(void *ptr);
 
 int main(void) {
@@ -17,8 +17,8 @@ int main(void) {
     };
 
     // first element points to 8 bytes, all initialized to 0
-    // cast this to a long
-    long *l = arr[0];
+    // cast this to a LONG64
+    LONG64 *l = arr[0];
     if (*l) // l should point to value 0
         return 1;
 

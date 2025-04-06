@@ -1,8 +1,8 @@
 int main(void) {
 
-    // bitwise compound operations on long integers
-    long l1 = 71777214294589695l;  // 0x00ff_00ff_00ff_00ff
-    long l2 = -4294967296;  // -2^32; upper 32 bits are 1, lower 32 bits are 0
+    // bitwise compound operations on LONG64 integers
+    LONG64 l1 = 71777214294589695l;  // 0x00ff_00ff_00ff_00ff
+    LONG64 l2 = -4294967296;  // -2^32; upper 32 bits are 1, lower 32 bits are 0
 
     l1 &= l2;
     if (l1 != 71777214277877760l) {

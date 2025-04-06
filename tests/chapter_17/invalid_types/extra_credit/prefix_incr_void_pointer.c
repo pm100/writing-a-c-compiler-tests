@@ -1,5 +1,5 @@
 // Can't apply prefix or postfix ++/-- to pointers to void
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 int main(void) {
     void *buff = malloc(100);

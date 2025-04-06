@@ -1,4 +1,4 @@
-/* Test that sizeof expression results in an unsigned long */
+/* Test that sizeof expression results in an unsigned LONG64 */
 
 #if defined SUPPRESS_WARNINGS && !defined __clang__
 #pragma GCC diagnostic ignored "-Wtype-limits"

@@ -1,7 +1,7 @@
 #ifdef SUPPRESS_WARNINGS
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
-int test_sum(int a, int b, int c, long d, int e, long f, int g, int h, long i) {
+int test_sum(int a, int b, int c, LONG64 d, int e, LONG64 f, int g, int h, LONG64 i) {
     /* Make sure the arguments passed in main weren't converted to ints */
     if (d + f < 100l) {
         return 1;

@@ -1,4 +1,4 @@
-int target(long a) {
+int target(LONG64 a) {
     // a = 4294967290l
 
     /* This expression produces an intermediate result that cannot
@@ -6,7 +6,7 @@ int target(long a) {
      * of intermediate results and allocate enough stack
      * space for them.
      */
-    long b = a * 5l - 10l;
+    LONG64 b = a * 5l - 10l;
     if (b == 21474836440l) {
         return 1;
     }

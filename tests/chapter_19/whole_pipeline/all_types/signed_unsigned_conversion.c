@@ -18,17 +18,17 @@ int target_uint_to_int(void) {
     return (i + 1) ? 0 : i * 2;
 }
 
-long target_ulong_to_long(void) {
-    unsigned long ul = 9223372036854775900ul;
+LONG64 target_ulong_to_long(void) {
+    unsigned LONG64 ul = 9223372036854775900ul;
     // after constant folding this cast, we can propagate the value of l
     // into the return statement
-    signed long l = (long)ul;
+    signed LONG64 l = (LONG64)ul;
     return l / 4;
 }
 
-unsigned long target_long_to_ulong(void) {
-    long l = -200l;
-    unsigned long ul = (unsigned long)l;
+unsigned LONG64 target_long_to_ulong(void) {
+    LONG64 l = -200l;
+    unsigned LONG64 ul = (unsigned LONG64)l;
     return ul / 10;
 }
 

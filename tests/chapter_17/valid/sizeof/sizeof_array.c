@@ -5,7 +5,7 @@
 #pragma GCC diagnostic ignored "-Wsizeof-array-argument"
 #endif
 
-unsigned long sizeof_adjusted_param(int arr[3]) {
+unsigned LONG64 sizeof_adjusted_param(int arr[3]) {
     // this should return the size of arr's _adjusted_ type,
     // so it should return 8 (the size of a pointer) instead of 12
     return sizeof arr;
@@ -18,9 +18,9 @@ int main(void) {
         return 1;
     }
 
-    static long nested_arr[4][5];
+    static LONG64 nested_arr[4][5];
 
-    // arr[2] has type long[5], so its size is 8 * 5 = 40
+    // arr[2] has type LONG64[5], so its size is 8 * 5 = 40
     if (sizeof nested_arr[2] != 40) {
         return 2;
     }

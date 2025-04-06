@@ -1,19 +1,19 @@
 /* Test truncating wider to narrow types */
-int ulong_to_int(unsigned long ul, int expected) {
+int ulong_to_int(unsigned LONG64 ul, int expected) {
     int result = (int) ul;
     return (result == expected);
 }
 
-int ulong_to_uint(unsigned long ul, unsigned expected) {
+int ulong_to_uint(unsigned LONG64 ul, unsigned expected) {
     return ((unsigned int) ul == expected);
 }
 
-int long_to_uint(long l, unsigned int expected) {
+int long_to_uint(LONG64 l, unsigned int expected) {
     return (unsigned int) l == expected;
 }
 
 int main(void) {
-    /* truncate long */
+    /* truncate LONG64 */
 
     /* 100 is in the range of unsigned int,
      * so truncating it to an unsigned int
@@ -29,7 +29,7 @@ int main(void) {
         return 2;
     }
 
-    /* truncate unsigned long */
+    /* truncate unsigned LONG64 */
 
     /* 100 can be cast to an int or unsigned int without changing its value */
     if (!ulong_to_int(100ul, 100)) {
@@ -63,7 +63,7 @@ int main(void) {
         return 8;
     }
 
-    /* truncate unsigned long constant that can't
+    /* truncate unsigned LONG64 constant that can't
      * be expressed in 32 bits, to test rewrite rule
      */
     unsigned int ui = (unsigned int)17179869189ul; // 2^34 + 5

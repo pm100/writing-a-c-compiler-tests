@@ -1,5 +1,5 @@
 struct s {
-    long l;
+    LONG64 l;
 };
 
 int main(void) {

@@ -8,12 +8,12 @@ int int_to_uint(int i, unsigned int expected) {
     return (unsigned int) i == expected;
 }
 
-int ulong_to_long(unsigned long ul, signed long expected) {
-    return (signed long) ul == expected;
+int ulong_to_long(unsigned LONG64 ul, signed LONG64 expected) {
+    return (signed LONG64) ul == expected;
 }
 
-int long_to_ulong(long l, unsigned long expected) {
-    return (unsigned long) l == expected;
+int long_to_ulong(LONG64 l, unsigned LONG64 expected) {
+    return (unsigned LONG64) l == expected;
 }
 
 int main(void) {
@@ -30,14 +30,14 @@ int main(void) {
         return 2;
     }
 
-    /* Converting a negative signed long -x to an unsigned long
+    /* Converting a negative signed LONG64 -x to an unsigned LONG64
      * results in 2^64 - x
      */
     if (!long_to_ulong(-1000l, 18446744073709550616ul)) {
         return 3;
     }
 
-    /* If an unsigned long is too large for a long to represent,
+    /* If an unsigned LONG64 is too large for a LONG64 to represent,
      * reduce it modulo 2^64 until it's in range.
      */
     if (!ulong_to_long(18446744073709550616ul, -1000l)) {

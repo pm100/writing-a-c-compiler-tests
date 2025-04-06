@@ -3,34 +3,34 @@
  * that we evaluate them with unsigned division/comparison functions,
  * and that we can evaluate expressions requiring all 64 bits.
  */
-unsigned long target_add(void) {
+unsigned LONG64 target_add(void) {
     // result exceeds ULONG_MAX and wraps around past 0
     return 18446744073709551615UL + 10ul;
 }
 
-unsigned long target_sub(void) {
+unsigned LONG64 target_sub(void) {
     // result is less then 0 and wraps back around past ULONG_MAX
     return 10ul - 12ul;
 }
 
-unsigned long target_mult(void) {
+unsigned LONG64 target_mult(void) {
     // wraps back around to 9223372036854775808ul
     return 9223372036854775808ul * 3ul;
 }
 
-unsigned long target_div(void) {
+unsigned LONG64 target_div(void) {
     return 18446744073709551614ul / 10ul;
 }
 
-unsigned long target_rem(void) {
+unsigned LONG64 target_rem(void) {
     return 18446744073709551614ul % 10ul;
 }
 
-unsigned long target_complement(void) {
+unsigned LONG64 target_complement(void) {
     return ~1ul;
 }
 
-unsigned long target_neg(void) {
+unsigned LONG64 target_neg(void) {
     return -(9223372036854775900ul);
 }
 

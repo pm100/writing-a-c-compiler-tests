@@ -4,7 +4,7 @@
 
 union u {
     int a;
-    long b;
+    LONG64 b;
 };
 
 int main(void){

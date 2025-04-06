@@ -1,38 +1,38 @@
-/* Test constant folding of operations on long ints.
+/* Test constant folding of operations on LONG64 ints.
  * Make sure we correctly handle operations that require all 64 bits.
  * Tests do not involve any overflow, since that's undefined behavior.
  */
-long target_add(void) {
+LONG64 target_add(void) {
     // we can add longs when the result exceeds INT_MAX
     return 2147483647l + 1000l;
 }
 
-long target_sub(void) {
+LONG64 target_sub(void) {
     // we can subtract longs when the result is smaller than INT_MIN
     return 1000l - 9223372036854773807l;
 }
 
-long target_mult(void) {
+LONG64 target_mult(void) {
     // can multiply longs when the result exceeds INT_MAX
     return 35184372088832l * 4l;
 }
 
-long target_div(void) {
+LONG64 target_div(void) {
     // both operands are larger than INT_MAX
     return 9223372036854775807l / 3147483647l;
 }
 
-long target_rem(void) {
+LONG64 target_rem(void) {
     // both operands are larger than INT_MAX
     return 9223372036854775807l % 3147483647l;
 }
 
-long target_complement(void) {
+LONG64 target_complement(void) {
     // alternating 1s and 0s
     return ~6148914691236517206l;
 }
 
-long target_neg(void) {
+LONG64 target_neg(void) {
     // except for most significant bit, upper 32 bits of negated value are all
     // zeros
     return -(9223372036854775716l);
@@ -73,9 +73,9 @@ int target_le(void) {
     return 2147483648l <= 0l;
 }
 
-long sub_result = 9223372036854772807l;
-long complement_result = 6148914691236517207l;
-long neg_result = 9223372036854775716l;
+LONG64 sub_result = 9223372036854772807l;
+LONG64 complement_result = 6148914691236517207l;
+LONG64 neg_result = 9223372036854775716l;
 
 int main(void) {
     // binary arithmetic

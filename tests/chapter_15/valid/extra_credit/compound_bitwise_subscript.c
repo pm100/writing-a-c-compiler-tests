@@ -1,6 +1,6 @@
 // compound bitwise assignment on subscript expressions
 int main(void) {
-    unsigned long arr[4] = {
+    unsigned LONG64 arr[4] = {
         2147483648l,                // 2^32
         18446744069414584320ul,     // 0xffff_ffff_0000_0000
         9223372036854775808ul,      // 2^63,

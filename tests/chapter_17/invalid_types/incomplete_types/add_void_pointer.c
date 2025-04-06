@@ -1,7 +1,7 @@
 // no pointer arithmetic with pointers to incomplete type
 // (GCC/Clang allow this as an extension)
 
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 int main(void) {
   void *x = malloc(100);

@@ -1,11 +1,11 @@
 // Array arithmetic with prefix and postfix ++/--
 int main(void) {
-    long arr[2][3][4] = {
+    LONG64 arr[2][3][4] = {
         {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}},
         {{13, 14, 15, 16}, {17, 18, 19, 20}, {21, 22, 23, 24}}};
 
     // pointer to outermost level
-    long (*outer_ptr)[3][4] = arr + 1;
+    LONG64 (*outer_ptr)[3][4] = arr + 1;
     if (outer_ptr-- != &arr[1]) {
         return 1; // fail
     }
@@ -21,7 +21,7 @@ int main(void) {
     }
 
     // pointer to next level in
-    long (*inner_ptr)[4] = arr[0] + 1;
+    LONG64 (*inner_ptr)[4] = arr[0] + 1;
     if (inner_ptr++[0][2] != 7) {
         return 5; // fail
     }
@@ -35,7 +35,7 @@ int main(void) {
     }
 
     // pointer to scalar elements
-    long *scalar_ptr = arr[1][2];
+    LONG64 *scalar_ptr = arr[1][2];
     if (scalar_ptr--[2] != 23) {
         return 8; // fail
     }

@@ -1,8 +1,8 @@
 /* Test accessing nested structures members, through dot, arrow, and subscript
  * operators */
 
-void *calloc(unsigned long nmemb, unsigned long size);
-void *malloc(unsigned long size);
+void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
+void *malloc(unsigned LONG64 size);
 
 struct inner {
     double a;
@@ -11,7 +11,7 @@ struct inner {
 };
 
 struct outer {
-    unsigned long l;
+    unsigned LONG64 l;
     struct inner *in_ptr;
     struct inner in_array[4];
     int bar;

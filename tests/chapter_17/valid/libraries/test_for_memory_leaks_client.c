@@ -3,7 +3,7 @@
  * after a void function call
  * */
 
-extern long sum;
+extern LONG64 sum;
 void lots_of_args(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j, int k, int l, int m, int n, int o);
 
 int main(void) {

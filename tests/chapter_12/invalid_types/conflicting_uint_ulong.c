@@ -1,7 +1,7 @@
-/* Can't declare the same function with two return types: unsignd int and unsigned long */
+/* Can't declare the same function with two return types: unsignd int and unsigned LONG64 */
 unsigned int foo(void);
 
-unsigned long foo(void) {
+unsigned LONG64 foo(void) {
     return 0;
 }
 
