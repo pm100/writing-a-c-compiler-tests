@@ -75,7 +75,7 @@ def get_props_key(source_file: Path) -> str:
 
 def needs_mathlib(prog: Path) -> bool:
     key = get_props_key(prog)
-    return key in REQUIRES_MATHLIB and not IS_OSX
+    return key in REQUIRES_MATHLIB and not IS_OSX and not IS_WINDOWS
 
 
 def get_libs(prog: Path) -> List[Path]:
