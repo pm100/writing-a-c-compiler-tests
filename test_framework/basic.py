@@ -582,8 +582,7 @@ class ExtraCredit(Flag):
     NONE = 0
     # spurious pylint error (https://github.com/PyCQA/pylint/issues/7381)
     # pylint: disable=unsupported-binary-operation
-    #ALL = BITWISE | COMPOUND | INCREMENT | GOTO | SWITCH | NAN | UNION
-    ALL = BITWISE | COMPOUND |  GOTO | SWITCH | NAN | UNION
+    ALL = BITWISE | COMPOUND | INCREMENT | GOTO | SWITCH | NAN | UNION
 
 
 def excluded_extra_credit(source_prog: Path, extra_credit_flags: ExtraCredit) -> bool:
