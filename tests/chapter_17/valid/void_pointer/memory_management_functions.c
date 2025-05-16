@@ -10,7 +10,13 @@
 void *malloc(unsigned LONG64 size);
 void *realloc(void *ptr, unsigned LONG64 size);
 void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
-void *aligned_alloc(unsigned LONG64 alignment, unsigned LONG64 size);
+#ifdef _WIN32
+void *_aligned_malloc(unsigned LONG64 alignment, unsigned LONG64 size);
+#define aligned_alloc _aligned_malloc
+void _aligned_free(void *ptr);
+#else
+void *aligned_alloc(unsigned LONG64 size, unsigned LONG64 alignment);
+#endif
 void free(void *ptr);
 
 int main(void) {
@@ -55,6 +61,10 @@ int main(void) {
     if ((unsigned LONG64) char_buffer % 256) {
         return 4;
     }
+    #ifdef _WIN32
+    _aligned_free(char_buffer);
+    #else
     free(char_buffer);
+    #endif
     return 0;
 }
