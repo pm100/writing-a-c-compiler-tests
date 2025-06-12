@@ -8,11 +8,11 @@
 #endif
 
 int strcmp(char *s1, char *s2);
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 struct small {
     int a;
-    long b;
+    LONG64 b;
 };
 
 struct s {

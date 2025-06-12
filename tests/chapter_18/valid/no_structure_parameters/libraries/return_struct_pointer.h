@@ -2,7 +2,7 @@
  * and using struct pointers returned from functions
  * */
 
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 // define some struct types
 struct inner {

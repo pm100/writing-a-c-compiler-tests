@@ -9,7 +9,7 @@
 // library functions
 int strcmp(char* s1, char* s2);
 void exit(int status);
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 // I. unions passed in one register
 
@@ -69,7 +69,7 @@ struct has_union {
 union has_struct_with_ints {
     double d;
     struct has_union s;
-    unsigned long ul;
+    unsigned LONG64 ul;
 };
 
 // II. Unions passed in two registers
@@ -113,7 +113,7 @@ union char_arr {
 // INTEGER class
 union two_arrs {
     double dbl_arr[2];
-    long long_arr[2];
+    LONG64 long_arr[2];
 };
 
 // union contains struct
@@ -149,7 +149,7 @@ struct nine_bytes {
 
 union has_nine_byte_struct {
     char c;
-    long l;
+    LONG64 l;
     struct nine_bytes s;
 };
 
@@ -202,7 +202,7 @@ union gp_and_xmm {
 // union contains struct
 
 union scalar_and_struct {
-    long* ptr; // only takes up first eightbyte
+    LONG64* ptr; // only takes up first eightbyte
     struct char_first_eightbyte cfe; // second eightbyte is in SSE class
 };
 
@@ -257,7 +257,7 @@ struct large {
 
 union contains_large_struct {
     int i;
-    unsigned long ul;
+    unsigned LONG64 ul;
     struct large l;
 };
 

@@ -8,7 +8,7 @@
 #endif
 
 int strcmp(char *s1, char *s2);
-int strncmp(char *s1, char *s2, unsigned long n);
+int strncmp(char *s1, char *s2, unsigned LONG64 n);
 
 struct one_int {
     int i;
@@ -16,7 +16,7 @@ struct one_int {
 };
 
 struct one_int_exactly {
-    unsigned long l;
+    unsigned LONG64 l;
 };
 
 struct two_ints {
@@ -59,7 +59,7 @@ struct odd_size {
 struct memory {
     double d;
     char c[3];
-    long l;
+    LONG64 l;
     int i;
 };
 
@@ -75,5 +75,5 @@ struct memory return_on_stack(void);
 
 // return on stack + pass other int params
 struct memory pass_and_return_regs(int i, double d, struct int_and_xmm strct,
-                                   int c, struct two_ints t_i, long l,
+                                   int c, struct two_ints t_i, LONG64 l,
                                    struct one_int_exactly o_i_e, int c2);

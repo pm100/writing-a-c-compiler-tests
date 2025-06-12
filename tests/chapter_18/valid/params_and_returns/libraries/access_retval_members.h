@@ -1,7 +1,7 @@
 /* Test for accessing the members in a return value of structure type */
 struct inner {
     char x;
-    long y;
+    LONG64 y;
 };
 
 struct outer {
@@ -10,7 +10,7 @@ struct outer {
     struct inner s;
 };
 
-void *calloc(unsigned long nmemb, unsigned long size);
+void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
 
 struct inner return_small_struct(void);
 struct outer return_nested_struct(void);

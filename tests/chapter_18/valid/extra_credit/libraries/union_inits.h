@@ -20,7 +20,7 @@ union inner {
 };
 
 struct my_struct {
-    long l;
+    LONG64 l;
     union inner u;
     int i;
 };
@@ -28,7 +28,7 @@ struct my_struct {
 union nested {
     struct my_struct str;
     union simple s;
-    long l;
+    LONG64 l;
 };
 
 int validate_simple(union simple *ptr);

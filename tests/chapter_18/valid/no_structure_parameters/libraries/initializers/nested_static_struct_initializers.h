@@ -23,7 +23,7 @@ struct inner {
 };
 
 struct outer {
-    long one_l;
+    LONG64 one_l;
     struct inner two_struct;
     char *three_msg;
     double four_d;

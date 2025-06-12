@@ -64,7 +64,7 @@ struct pass_in_memory {
     double w;
     double x;
     int y;
-    long z;
+    LONG64 z;
 };  // four MEMORY eightbytes
 
 // validation functions defined in library

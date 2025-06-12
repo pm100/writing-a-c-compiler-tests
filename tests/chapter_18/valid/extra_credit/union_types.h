@@ -1,9 +1,9 @@
-void *calloc(unsigned long nmemb, unsigned long size);
-void *malloc(unsigned long size);
+void *calloc(unsigned LONG64 nmemb, unsigned LONG64 size);
+void *malloc(unsigned LONG64 size);
 
 union simple {
     int i;
-    long l;
+    LONG64 l;
     char c;
     unsigned char uc_arr[3];
 };
@@ -15,19 +15,19 @@ union has_union {
 };
 
 struct simple_struct {
-    long l;
+    LONG64 l;
     double d;
     unsigned int u;
 };
 
 union has_struct {
-    long l;
+    LONG64 l;
     struct simple_struct s;
 };
 
 struct struct_with_union {
     union simple u;
-    unsigned long ul;
+    unsigned LONG64 ul;
 };
 
 union complex_union {

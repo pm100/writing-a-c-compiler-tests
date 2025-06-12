@@ -1,7 +1,7 @@
 /* Test passing struct pointers as function parameters */
 
 // library function
-void *malloc(unsigned long size);
+void *malloc(unsigned LONG64 size);
 
 // define some struct types
 struct inner {

@@ -9,7 +9,7 @@ struct inner {
 struct outer {
     struct inner s;
     struct inner *ptr;
-    long l;
+    LONG64 l;
 };
 
 int modify_simple_struct(struct inner s);

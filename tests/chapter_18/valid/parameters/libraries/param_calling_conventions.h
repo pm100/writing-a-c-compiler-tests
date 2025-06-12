@@ -10,12 +10,12 @@
 #endif
 
 int strcmp(char *s1, char *s2);
-int strncmp(char *s1, char *s2, unsigned long n);
+int strncmp(char *s1, char *s2, unsigned LONG64 n);
 
 // This type comes from Listing 18-45
 struct two_longs {
-    long a;
-    long b;
+    LONG64 a;
+    LONG64 b;
 };
 
 struct one_int {
@@ -24,7 +24,7 @@ struct one_int {
 };
 
 struct one_int_exactly {
-    unsigned long l;
+    unsigned LONG64 l;
 };
 
 struct two_ints {
@@ -67,7 +67,7 @@ struct odd_size {
 struct memory {
     double d;
     char c[3];
-    long l;
+    LONG64 l;
     int i;
 };
 
@@ -85,12 +85,12 @@ int a_bunch_of_arguments(int i0, int i1, int i2, int i3, int i4,
                          struct two_longs param, int i5);
 
 // use remaining structure types, mix with scalars
-int structs_and_scalars(long l, double d, struct odd_size os, struct memory mem,
+int structs_and_scalars(LONG64 l, double d, struct odd_size os, struct memory mem,
                         struct one_xmm xmm_struct);
 
 // pass fourth_struct in memory b/c we're out of XMM registers
 int struct_in_mem(double a, double b, double c, struct xmm_and_int first_struct,
-                  double d, struct two_xmm second_struct, long l,
+                  double d, struct two_xmm second_struct, LONG64 l,
                   struct int_and_xmm third_struct,
                   struct one_xmm fourth_struct);
 
@@ -101,7 +101,7 @@ int pass_borderline_struct_in_memory(struct two_ints t_i, int c,
                                      struct two_ints_nested t_i_n, double d);
 
 // pass a struct in memory that isn't neatly divisible by 8
-int pass_uneven_struct_in_mem(struct twelve_bytes struct1, long a, long b,
+int pass_uneven_struct_in_mem(struct twelve_bytes struct1, LONG64 a, LONG64 b,
                               struct twelve_bytes struct2, struct odd_size os,
                               struct memory m);
 

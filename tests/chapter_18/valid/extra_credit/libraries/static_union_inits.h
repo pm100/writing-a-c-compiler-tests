@@ -50,7 +50,7 @@ int validate_uninitialized(void);
 // is included
 union with_padding {
     char arr[13];
-    long l;
+    LONG64 l;
 }; // extra 3 bytes of padding to make it 8-byte aligned
 
 extern union with_padding padded_union_array[3];
