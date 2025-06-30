@@ -115,24 +115,26 @@ def gcc_compile_and_run(
     """
 
     # output file is same as first input without suffix
-    if platform.system() == "Windows":
+    if IS_WINDOWS:
         exe = source_files[0].with_suffix(".exe")
     else:
         exe = source_files[0].with_suffix("")
 
     # compile it
     try:
-        if platform.system() == "Windows":
-            if source_files[1].suffix == ".s":
-                # TODO handle assembly files on Windows
-                obj = source_files[1].with_suffix(".obj")
-                result = subprocess.run(
-                    ["nasm", "-fwin64", source_files[1]] + ["-o", obj],
-                    check=True,
-                    text=True,
-                    capture_output=True,
-                )
-                source_files[1] = obj
+       
+        if IS_WINDOWS:
+            for idx in range(len(source_files)):
+                if source_files[idx].suffix == ".s":
+                    obj = source_files[idx].with_suffix(".obj")
+                    result = subprocess.run(
+                        ["as", source_files[idx]] + ["-o", obj] ,
+                        check=True,
+                        text=True,
+                        capture_output=True,
+                    )
+                    source_files[idx] = obj
+                
             result = subprocess.run(
                 ["cl.exe", "/D", "SUPPRESS_WARNINGS", "msvcrt.lib", "/nologo","/D", "LONG64=long long"] + source_files + options + ["/Fe" + str(exe)],
                             check=True,
@@ -142,7 +144,7 @@ def gcc_compile_and_run(
      
         else:
             result = subprocess.run(
-                ["gcc", "-D", "SUPPRESS_WARNINGS"] + source_files + options + ["-o", exe],
+                ["gcc", "-D", "SUPPRESS_WARNINGS", "-D", "LONG64=long"] + source_files + options + ["-o", exe],
                 check=True,
                 text=True,
                 capture_output=True,
