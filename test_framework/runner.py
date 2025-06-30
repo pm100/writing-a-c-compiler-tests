@@ -339,14 +339,7 @@ Then try running this script again from that shell.
         return False
 
     elif system == "Windows":
-        # the architecture is right but they need to use WSL
-#         print(
-#             """You're running Windows. You need to use WSL to emulate Linux.
-# Follow these instructions to install WSL and set up a Linux distribution on your machine: https://learn.microsoft.com/en-us/windows/wsl/install.
-# Then clone the test suite in your Linux distribution and try this command again from there.
-#             """
-#         )
-        #return False
+
         compiler = ["cl","/?"]
 
     elif system not in ["Linux", "FreeBSD"]:
@@ -355,11 +348,11 @@ Then try running this script again from that shell.
             "This OS isn't officially supported. You might be able to complete the project on this system, but no guarantees."
         )
 
-    # Check that GCC command is present
+    # Check that compiler command is present
     try:
         subprocess.run(compiler, check=True, capture_output=True)
     except FileNotFoundError:
-        msg = "Can't find the 'gcc' command. "
+        msg = "Can't find the complier command. "
         if system == "Darwin":
             msg = (
                 msg
@@ -368,6 +361,12 @@ Then try running this script again from that shell.
 Then try this command again.
 """
             )
+        elif system == "Windows":
+            msg = (
+                msg
+                + "Install MSVC, then try this command again."
+            )
+
         else:
             msg = (
                 msg
@@ -376,29 +375,41 @@ Then try this command again.
         issues.append(msg)
 
     # Check that GDB or LLDB is present
-    try:
-        subprocess.run(["gdb", "-v"], check=True, capture_output=True)
-    except FileNotFoundError:
+    if system == "Windows":
+        # on Windows, test for gnu assembler (as) instead of a debugger
         try:
-            # gdb isn't installed, try lldb
-            subprocess.run(["lldb", "-v"], check=True, capture_output=True)
+            subprocess.run(["as", "--version"], check=True, capture_output=True)
         except FileNotFoundError:
-            # neither is installed
-            msg = "No debugger found. The test script doesn't require a debugger but you probably want one for, ya know, debugging. "
-            # TODO refactor
-            if system == "Darwin":
-                msg = (
-                    msg
-                    + """LLDB is included in the Xcode command-line developer tools. To install them, run:
-                    clang -v
-                Then try this command again."""
-                )
-            else:
-                msg = (
-                    msg
-                    + "\nUse your system's package manager to install GDB, then try this command again."
-                )
+            msg = "Can't find the GNU assembler (as). "
+            msg = (
+                msg
+                + "Install gnu assembler, then try this command again."
+            )
             issues.append(msg)
+    else:
+        try:
+            subprocess.run(["gdb", "-v"], check=True, capture_output=True)
+        except FileNotFoundError:
+            try:
+                # gdb isn't installed, try lldb
+                subprocess.run(["lldb", "-v"], check=True, capture_output=True)
+            except FileNotFoundError:
+                # neither is installed
+                msg = "No debugger found. The test script doesn't require a debugger but you probably want one for, ya know, debugging. "
+                # TODO refactor
+                if system == "Darwin":
+                    msg = (
+                        msg
+                        + """LLDB is included in the Xcode command-line developer tools. To install them, run:
+                        clang -v
+                    Then try this command again."""
+                    )
+                else:
+                    msg = (
+                        msg
+                        + "\nUse your system's package manager to install GDB, then try this command again."
+                    )
+                issues.append(msg)
 
     if issues:
         print("\n\n".join(issues))
