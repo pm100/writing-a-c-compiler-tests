@@ -1,8 +1,7 @@
-   segment .bss
-    align 4096
-    resb 4090
-    global zed
+    .bss
+    .align 4096
+    .zero 4090
+    .globl zed
 zed:
-    resb 1
-    
-  
+    .zero 1
+
